@@ -1,5 +1,5 @@
 import React from "react";
-import "./Propertylist.scss";
+import "./PropertyList.scss";
 import useFetch from "../../customhooks/useFetch";
 import resort from "./propertylist_images/Resort.jpeg";
 import motel from "./propertylist_images/motel.jpeg";
