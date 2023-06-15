@@ -31,7 +31,7 @@ const PropertyListSkeleton = () => {
 
 const PropertyList = () => {
   const { data, isPending, error } = useFetch(
-    `${import.meta.env.VITE_REACT_SERVER_URL}hotels/countbytype`
+    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/countbytype`
   );
   const navigate = useNavigate()
   const { dispatch } = useContext(Searchcontext);

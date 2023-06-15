@@ -79,7 +79,7 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
             console.log(date[0].startDate)
             console.log(date[0].endDate)
             const booked = await axios.post(
-                `${import.meta.env.VITE_REACT_SERVER_URL}booking/create_payment_intent`,
+                `$${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/create_payment_intent`,
                 {
                     user: currentUser?.email,
                     hotelid: id,
@@ -139,7 +139,7 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
         try {
             console.log('herenew')
             const response = await axios.post(
-                `${import.meta.env.VITE_REACT_SERVER_URL}room/updatedate/dates`,
+                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/room/updatedate/dates`,
                 {
                     dates,
                     selectedrooms,

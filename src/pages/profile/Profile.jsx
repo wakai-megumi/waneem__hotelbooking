@@ -77,7 +77,7 @@ const UserProfile = () => {
             try {
                 const response = await axios.get(
 
-                    `http://localhost:3000/api/v1/user/get/${id}`,
+                    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/user/get/${id}`,
                     { withCredentials: true }
                 );
 
@@ -206,7 +206,7 @@ const UserProfile = () => {
         try {
             // setUpdateSuccess(true);
             const response = await axios.put(
-                `http://localhost:3000/api/v1/user/update/${id}`,
+                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/user/update/${id}`,
                 {
                     username: userData[1].value,
                     email: userData[2].value,

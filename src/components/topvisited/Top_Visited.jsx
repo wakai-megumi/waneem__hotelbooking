@@ -8,7 +8,7 @@ const TopVisited = () => {
   const { dispatch } = useContext(Searchcontext)
 
   const { data, isPending, error } = useFetch(
-    `${import.meta.env.VITE_REACT_SERVER_URL}hotels/get?featured=true&limit=4`
+    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/get?featured=true&limit=4`
   )
   const navigate = useNavigate()
 

@@ -38,7 +38,7 @@ const HotelList = () => {
   ///////////////////////////////////////////////////////////
   console.log(destination, service_info,)
   const { data, refetch } = useFetch(
-    `${import.meta.env.VITE_REACT_SERVER_URL}hotels/get?destination=${destination}&min=${service_info?.minprice
+    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/get?destination=${destination}&min=${service_info?.minprice
     }&max=${service_info?.maxprice || 999999}
       &adults=${service_info?.adults}&child=${service_info?.child}&rooms=${service_info?.rooms}&type=${type}`
   )

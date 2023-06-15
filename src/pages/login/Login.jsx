@@ -24,11 +24,12 @@ const Login = () => {
   const handlesubmit = async (e) => {
     e.preventDefault()
     console.log("handlesubmit")
+    console.log("here")
 
     dispatch({ type: "START" })
     try {
       const { email, password } = credentials
-      const res = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}auth/login`, {
+      const res = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/auth/login`, {
         email: email,
         password: password,
       },

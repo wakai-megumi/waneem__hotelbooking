@@ -15,7 +15,7 @@ const Mybooking = () => {
 
     const fetchBookings = async () => {
         try {
-            const response = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}booking/user_booking`, {
+            const response = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/user_booking`, {
                 useremail: JSON.parse(localStorage.getItem("currentUser")).email,
             });
 
@@ -35,7 +35,7 @@ const Mybooking = () => {
             console.log("update")
         }
         if (action === "delete") {
-            const response = await axios.delete(`${import.meta.env.VITE_REACT_SERVER_URL}booking/delete`, {
+            const response = await axios.delete(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/delete`, {
                 headers: {
                     'data': JSON.stringify({
                         id: bookingId,
