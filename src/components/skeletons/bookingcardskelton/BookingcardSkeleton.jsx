@@ -1,5 +1,5 @@
 import React from "react";
-import "./BookingCardSkeleton.scss";
+import "./BookingcardSkeleton.scss";
 
 const BookingCardSkeleton = () => {
     return (
