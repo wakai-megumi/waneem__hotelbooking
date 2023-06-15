@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { Authcontext } from "../../context/Authcontext.jsx"
 import axios from "axios"
 import "./Login.scss"
@@ -17,6 +17,12 @@ const Login = () => {
       [e.target.id]: e.target.value,
     }))
   }
+  useEffect(() => {
+
+    dispatch({ type: "LOGOUT" })
+
+  }, [])
+
   ///code for make user go back on same page after login from where he is reidirected
 
   console.log(loading)
@@ -68,7 +74,7 @@ const Login = () => {
           value={credentials.password}
           onChange={handlechange}
         />
-        <button disabled={loading} className="btn" type="submit">
+        <button disabled={loading} style={loading ? { cursor: 'not-allowed' } : null} className="btn" type="submit">
           submit
         </button>
         {error && <span className="error"> {error}</span>}

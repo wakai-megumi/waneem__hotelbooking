@@ -29,7 +29,7 @@ const FeaturedSkeleton = () => {
 
 const Featured = () => {
   const { data, isPending, error } = useFetch(
-    `${import.meta.env.VITE_REACT_SERVER_URL}hotels/countbycity?cities=shimla,chandigarh,shahpur`
+    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/countbycity?cities=shimla,chandigarh,shahpur`
 
   );
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import './Lovely_penguin.scss';
+import '../lovely_penguin/Lovely_penguin.scss';
 
 const Penguin = () => {
     return (
