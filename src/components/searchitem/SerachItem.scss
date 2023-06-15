@@ -1,0 +1,150 @@
+.searchitem {
+  width: 100%;
+  box-shadow: 1px 1px 20px rgba(22, 21, 21, 0.4);
+  padding: 1rem;
+  .si-container {
+    display: flex;
+    // gap: 10px;
+    .si-img {
+      flex: 1;
+      overflow: hidden;
+      border-radius: 10px;
+      width: 200px;
+      height: 230px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .si-info {
+      flex: 2;
+      padding: 0 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .si-title {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+        color: rgb(5, 29, 29);
+        margin: 0 0 0.5rem 0;
+      }
+      .category {
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+        color: rgb(48, 68, 68);
+      }
+      .si-distance {
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        color: rgb(5, 34, 34);
+      }
+      .si-amenities {
+        border: none;
+        outline: none;
+        background-image: linear-gradient(
+          to right,
+          rgb(153, 64, 155),
+          rgb(74, 122, 167),
+          rgb(0, 212, 255)
+        );
+        width: max-content;
+        padding: 0.3rem;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+        color: rgb(245, 245, 245);
+        animation: focus 3s linear infinite;
+      }
+      .si-Features {
+        font-size: 1.2rem;
+        font-weight: 600;
+        line-height: 1.5rem;
+        color: rgb(40, 78, 78);
+      }
+    }
+    .si-details {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: space-between;
+      .si-details-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .si-grading {
+          font-size: 1.2rem;
+          font-weight: 600;
+          line-height: 1.5rem;
+          color: rgb(5, 34, 34);
+        }
+        .si-rating {
+          font-size: 1.2rem;
+          font-weight: 500;
+          line-height: 1.5rem;
+          color: white;
+          padding: 5px;
+          border-radius: 10px;
+          background-color: rgb(5, 34, 34);
+        }
+      }
+      .si-details-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1rem;
+        .si-starting-price {
+          font-size: 1.2rem;
+          animation: dance 3s linear infinite;
+          font-weight: 600;
+          line-height: 1.5rem;
+          color: rgb(5, 34, 34);
+        }
+        .si-booking {
+          font-size: 0.6rem;
+        }
+        .si-booking {
+          font-size: 1.4rem;
+          border: none;
+          background-color: green;
+          border-radius: 20px;
+          padding: 0.9rem;
+          color: white;
+        }
+      }
+    }
+  }
+}
+//animation for search item
+// Path: src\components\searchitem\SerachItem.scss
+@keyframes focus {
+  0% {
+    filter: hue-rotate(0deg) brightness(90%) saturate(100%);
+  }
+
+  50% {
+    filter: hue-rotate(180deg) brightness(100%) saturate(100%);
+  }
+  100% {
+    filter: hue-rotate(360deg) brightness(100%) saturate(100%);
+  }
+}
+
+@keyframes dance {
+  0% {
+    transform: rotateX(20);
+    transform: translate(-30%);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: rotateX(0);
+    transform: translate(20%);
+  }
+}

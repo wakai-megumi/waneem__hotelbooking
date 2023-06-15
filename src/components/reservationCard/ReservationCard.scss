@@ -1,0 +1,238 @@
+.reservationCard {
+  width: 50%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // position: relative;
+
+  .reservationCard__container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 1rem;
+    position: relative;
+
+    .reservationCard__closebtn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      background-color: transparent;
+      color: white;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.6);
+      }
+    }
+
+    .reservationCard__room {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .reservationCard__roomtype {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .reservationCard__desc {
+        font-size: 1rem;
+        color: white;
+      }
+
+      .reservationCard__roomprice {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .roomnumber {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        border-bottom: 2px solid white;
+
+        .roomnumber__container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          label {
+            font-size: 1rem;
+            color: white;
+          }
+
+          .roomnumber__checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+
+            &:checked {
+              background-color: white;
+            }
+          }
+        }
+      }
+    }
+
+    .reservationCard__bookbtn {
+      padding: 10px;
+      align-self: center;
+      background-color: white;
+      color: black;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease-in-out;
+
+      &:hover {
+        background-color: lightgray;
+      }
+
+      &:disabled {
+        background-color: gray;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .confirmation_container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 3px 6px;
+    background-color: rgba(111, 106, 106, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .reservationCard__confirmation {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 2rem;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 70%;
+      box-shadow: 1px 1px 10px 1px rgba(234, 234, 234, 0.8);
+      > .details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .close_confirmation {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        background-color: transparent;
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+        animation: flicker 1s infinite linear;
+
+        &:hover {
+          transform: scale(1.6);
+        }
+      }
+      @keyframes flicker {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .confirmation_title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+      }
+
+      .confirmation_details {
+        font-size: 1rem;
+        color: white;
+      }
+
+      .confirmstion_btn {
+        padding: 10px;
+        align-self: center;
+        background-color: white;
+        color: black;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+        padding: 10px;
+        border-radius: 20px;
+        animation: tickle 2s infinite linear;
+        &:hover {
+          background-color: lightgray;
+        }
+
+        &:disabled {
+          background-color: gray;
+          cursor: not-allowed;
+        }
+      }
+    }
+
+    @keyframes tickle {
+      0% {
+        transform: rotate(0deg);
+      }
+      25% {
+        transform: rotate(5deg);
+      }
+      50% {
+        transform: rotate(0deg);
+      }
+      75% {
+        transform: rotate(-5deg);
+      }
+      100% {
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
+
+.number,
+.type {
+  font-size: 1rem;
+  color: white;
+  margin: 0 1rem 0 0;
+}

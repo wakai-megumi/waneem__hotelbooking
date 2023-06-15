@@ -1,0 +1,138 @@
+.hotel-skeleton {
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.hotel-skeleton-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hotel-info-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hotel-info {
+  display: flex;
+  align-items: center;
+}
+
+.hotel-logo-skeleton {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin-right: 10px;
+}
+
+.hotel-location-skeleton {
+  width: 120px;
+  height: 20px;
+  background-color: #ddd;
+}
+
+.details {
+  margin-left: 20px;
+}
+
+.hotel-name-skeleton {
+  width: 250px;
+  height: 30px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+
+.hotel-distance-skeleton {
+  width: 150px;
+  height: 20px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+
+.hotel-price-skeleton {
+  width: 200px;
+  height: 20px;
+  background-color: #ddd;
+}
+
+.hotel-gallery-skeleton {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gallery-image-skeleton {
+  width: 100%;
+  height: 200px;
+  background-color: #ddd;
+}
+
+.hotel-detail-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.hotel-detail {
+  flex: 1;
+}
+
+.hotel-title-skeleton {
+  width: 200px;
+  height: 30px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+
+.hotel-description-skeleton {
+  width: 400px;
+  height: 80px;
+  background-color: #ddd;
+}
+
+.hotel-details-price {
+  margin-left: 20px;
+}
+
+.short-title-skeleton {
+  width: 150px;
+  height: 20px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+
+.short-desc-skeleton {
+  width: 250px;
+  height: 20px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+}
+
+.price-section-skeleton {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.full-price-skeleton {
+  width: 120px;
+  height: 30px;
+  background-color: #ddd;
+  margin-right: 10px;
+}
+
+.stay-details-skeleton {
+  width: 80px;
+  height: 20px;
+  background-color: #ddd;
+}
+
+.reserve-btn-skeleton {
+  width: 150px;
+  height: 40px;
+  background-color: #ddd;
+  margin-top: 20px;
+}

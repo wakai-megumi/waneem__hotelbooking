@@ -1,0 +1,26 @@
+.available_soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  position: relative;
+  background-color: lightgray;
+  height: 100vh;
+
+  .cutie-contianer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    animation: huechange 10s infinite linear;
+  }
+
+  @keyframes huechange {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+}

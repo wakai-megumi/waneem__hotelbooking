@@ -1,0 +1,122 @@
+.topvisited-container {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  gap: 1rem;
+
+  .topvisited-card {
+    flex: 1;
+    width: 30%;
+    height: 380px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    .topvisited-img {
+      width: 100%;
+      height: 60%;
+      object-fit: cover;
+      background-color: #ebe8e8;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: all 0.5s ease-in-out;
+      }
+    }
+
+    .topvisited-info {
+      padding: 10px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .topvisited-title {
+        font-size: 1rem;
+        font-weight: 600;
+        font-style: italic;
+        color: #000;
+      }
+
+      .topvisited-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #000;
+      }
+
+      .topvisited-city {
+        font-size: 1rem;
+        font-weight: 400;
+        color: #000;
+      }
+
+      .topvisited-startig-price {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #000;
+
+        span {
+          font-size: 1.5rem;
+          font-weight: 600;
+          color: #000;
+        }
+      }
+
+      .topvisited-rating {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 10px;
+
+        .topvisited-rating-value {
+          border: 1px solid black;
+          border-radius: 50%;
+          padding: 4px;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #000;
+        }
+
+        .topvisited-rating-classification {
+          font-size: 1rem;
+          font-weight: 400;
+          color: #000;
+          margin: 0 0 0 1rem;
+        }
+      }
+    }
+
+    // Skeleton styles
+    &.skeleton-card {
+      background-color: #ccc;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    .skeleton-img,
+    .skeleton-info,
+    .skeleton-name,
+    .skeleton-city,
+    .skeleton-starting-price,
+    .skeleton-title,
+    .skeleton-rating {
+      .skeleton-rating {
+        background-color: #ccc;
+      }
+    }
+
+    @keyframes glow {
+      0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+      100% {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+    }
+  }
+}
