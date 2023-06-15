@@ -33,11 +33,16 @@ const Login = () => {
         email: email,
         password: password,
       },
-        { withCredentials: true })
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
       dispatch({ type: "SUCCESS", payload: res?.data?.user })
       navigate('/')
     } catch (err) {
-      console.log(err)
+      console.log(err, "by here this error")
       dispatch({ type: "FAILURE", payload: err.response.data.message })
     }
   }
