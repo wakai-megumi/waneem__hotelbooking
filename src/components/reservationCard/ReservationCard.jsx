@@ -163,6 +163,7 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
 
     console.log(currentUser)
     const handleReservation = async () => {
+        console.log("in this")
         const dates = getDates(date[0]?.startDate, date[0]?.endDate);
 
         if (currentUser === null) {
@@ -213,10 +214,11 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
 
     const confirmBookingDetails = () => {
         if (selectedrooms.length === 0) {
-            toast.error(' please select a room 🤔 🤔')
-            return;
+
+            return toast.error(' please select a room 🤔 🤔')
+
         }
-        console.log('here')
+        console.log('here. in this')
 
         setBookingDetails({
             hotelname,
