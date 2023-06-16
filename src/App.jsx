@@ -22,12 +22,13 @@ import { BsArrowLeft } from 'react-icons/bs'
 
 import NotFoundPage from "./pages/notfoundpage/NotFoundPage"
 import AvailableSoon from "./pages/avaialablesoon/AvailableSoon"
+import PaymentSuccess from "./pages/paymentSuccess/PaymentSuccess"
 const App = () => {
   const BackButton = () => {
     const navigate = useNavigate();
 
     const goBack = () => {
-      navigate(-1); // Navigate back to the previous page
+      navigate(-1);
     };
 
     return (
@@ -73,9 +74,12 @@ const App = () => {
 
         <Route path="/success" element={<Success />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/payment_success" element={<PaymentSuccess />} />
 
 
-        <Route path="/bookings/:id" element={<Mybooking />} />
+
+
+        <Route path="/bookings" element={<Mybooking />} />
       </Routes>
       <BackButton />
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />

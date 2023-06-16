@@ -56,7 +56,7 @@
         color: #000;
       }
 
-      .topvisited-startig-price {
+      .topvisited-starting-price {
         font-size: 1rem;
         font-weight: bold;
         color: #000;
@@ -94,20 +94,8 @@
 
     // Skeleton styles
     &.skeleton-card {
-      background-color: #ccc;
+      background-color: rgba(249, 248, 248, 0.4);
       animation: glow 1.5s infinite alternate;
-    }
-
-    .skeleton-img,
-    .skeleton-info,
-    .skeleton-name,
-    .skeleton-city,
-    .skeleton-starting-price,
-    .skeleton-title,
-    .skeleton-rating {
-      .skeleton-rating {
-        background-color: #ccc;
-      }
     }
 
     @keyframes glow {

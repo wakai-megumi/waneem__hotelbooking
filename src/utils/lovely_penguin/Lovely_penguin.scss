@@ -64,6 +64,7 @@
   background-color: black;
   top: 45%;
   border-radius: 50%;
+  animation: eyescale 3s infinite;
 }
 
 .eye.left {
@@ -191,6 +192,17 @@
   }
   40% {
     transform: rotate(130deg) scaleX(-1);
+  }
+}
+@keyframes eyescale {
+  0% {
+    transform: scale(1.8);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }
 

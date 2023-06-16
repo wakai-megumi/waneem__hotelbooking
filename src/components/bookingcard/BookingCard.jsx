@@ -2,7 +2,7 @@ import React from "react";
 import "./BookingCard.scss";
 import propTypes from "prop-types";
 const BookingCard = ({ booking, handleEditDelete }) => {
-    const { hotel, checkInDate, checkOutDate, guests, roomN } = booking;
+    const { hotel, checkInDate, checkOutDate, guests, roomN, ReservationAmount, TotalPrice } = booking;
     const options = {
         year: "numeric",
         month: "numeric",
@@ -11,25 +11,33 @@ const BookingCard = ({ booking, handleEditDelete }) => {
     console.log(booking._id)
     const checkIn = new Date(checkInDate).toLocaleDateString("en-IN", options)
     const checkOut = new Date(checkOutDate).toLocaleDateString("en-IN", options)
+    // checkindate , checkoutdate
 
-    const getDates = (checkInDate, checkOutDate) => {
-        let dates = []
-        const theDate = new Date(checkInDate)
-        const enddate = new Date(checkOutDate)
-        while (theDate < enddate) {
-            dates = [...dates, new Date(theDate)?.getTime()]
-            theDate.setDate(theDate?.getDate() + 1)
+    const getDates = (startDate, endDate) => {                  // one catch is that we are taking midnight of dates to keep data consistency
+        let dates = [];
+        const theDate = new Date(startDate);
+
+        theDate.setHours(0, 0, 0, 0);
+
+        while (theDate <= endDate) {
+            dates = [...dates, new Date(theDate).getTime()];
+            theDate.setDate(theDate.getDate() + 1);
         }
-        dates = [...dates, enddate.getTime()]
-        return dates
-    }
+
+        const midnightEndDate = new Date(endDate);
+        midnightEndDate.setHours(0, 0, 0, 0);
+        dates = [...dates, midnightEndDate.getTime()];
+
+        return dates;
+    };
 
     //callback to parent mybookingpage
     const handleEdit = () => {
-        handleEditDelete("update", booking._id)
+        handleEditDelete("update", booking._id,)
     }
     const handleDelete = () => {
         const dates = getDates(checkInDate, checkOutDate)
+
         handleEditDelete("delete", booking._id, dates)
     }
 
@@ -43,7 +51,7 @@ const BookingCard = ({ booking, handleEditDelete }) => {
                 </div>
                 <div className="booking-card__hotel-booking-status">
                     <span className="booking-card__hotel-booking-status-label"> Booking Status :</span>
-                    <span className="booking-card__hotel-booking-status-value" style={booking.status === "approved" ? { color: 'green' }
+                    <span className="booking-card__hotel-booking-status-value" style={booking.status === "Approved" ? { color: 'green' }
                         : booking.status === "Pending" ? { color: 'orange' } : { color: 'red' }
 
                     }>{booking.status}</span>
@@ -62,6 +70,7 @@ const BookingCard = ({ booking, handleEditDelete }) => {
                     <span className="booking-card__label">Guests:</span>
                     <span className="booking-card__value">{guests}</span>
                 </div>
+
                 <div className="booking-card__detail">
                     <span className="booking-card__label">Room Numbers:</span>
                     <span className="booking-card__value">{roomN.map(number => {
@@ -69,6 +78,14 @@ const BookingCard = ({ booking, handleEditDelete }) => {
                             <span style={{ marginRight: '5px' }} key={number.number}>{number.number} </span>
                         )
                     })}</span>
+                </div>
+                <div className="booking-card__detail">
+                    <span className="booking-card__label">Reservation Amount:</span>
+                    <span className="booking-card__value">{ReservationAmount}</span>
+                </div>
+                <div className="booking-card__detail">
+                    <span className="booking-card__label">Total Amount:</span>
+                    <span className="booking-card__value">{TotalPrice || '---'}</span>
                 </div>
             </div>
             <div className="booking-card__hotel__info-bookingedit">

@@ -14,7 +14,7 @@ const Home = () => {
         <Featured />
         <h2 className="hs-title">Browse by property type</h2>
         <PropertyList />
-        <h2 className="hs-title">Browse by top visited</h2>
+        <h2 className="hs-title">Top visited</h2>
         <TopVisited />
       </div>
 

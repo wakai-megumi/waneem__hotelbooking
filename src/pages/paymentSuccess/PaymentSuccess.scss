@@ -1,0 +1,21 @@
+.paymentsuccess {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  .penguin {
+    animation: jump 3s infinite;
+  }
+  .notice {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+
+    span {
+      color: #ff0000;
+    }
+  }
+  .penguin * {
+    position: absolute;
+  }
+}

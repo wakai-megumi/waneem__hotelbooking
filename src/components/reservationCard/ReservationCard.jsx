@@ -10,9 +10,13 @@ import { set } from "date-fns";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Spinner from "../../utils/spinner/Spinner";
+import { useEffect } from "react";
+import { useRef } from "react";
 
-export const ReservationCard = ({ id, setopen, hotelname }) => {
+export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
     const navigate = useNavigate();
+    const ReservationCardRef = useRef(null);
+
     console.log(id, "id hotel page 4")
     const [selectedrooms, setselectedrooms] = useState([]);
     const { data, error, loading } = useFetch(
@@ -30,6 +34,7 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
         const number = e.target.parentElement.children[0].innerText;
         const isChecked = e.target.checked;
         const key = [number, title];
+
 
         setselectedrooms((prevSelectedRooms) => {
             if (isChecked) {
@@ -52,21 +57,43 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
             }
         });
     };
+    useEffect(() => {
+        ReservationCardRef.current?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        })
+    }, [])
 
     const getDates = (startDate, endDate) => {
         let dates = [];
         const theDate = new Date(startDate);
-        while (theDate < endDate) {
-            dates = [...dates, new Date(theDate)?.getTime()];
-            theDate.setDate(theDate?.getDate() + 1);
+
+        theDate.setHours(0, 0, 0, 0);
+        const midnightEndDate = new Date(endDate);
+        midnightEndDate.setHours(0, 0, 0, 0);
+        while (theDate < midnightEndDate) {
+            dates = [...dates, new Date(theDate).getTime()];
+            theDate.setDate(theDate.getDate() + 1);
         }
-        dates = [...dates, endDate?.getTime()];
+
+
+        dates = [...dates, midnightEndDate.getTime()];
+
         return dates;
     };
 
+
+
+
+
+    console.log(date[0]?.startDate, date[0]?.endDate)
     const isRoomAvailable = (roomnumber) => {
+        console.log(roomnumber?.unavialableDates, "hsfs")
+
         const dates = getDates(date[0]?.startDate, date[0]?.endDate);
+        console.log(dates, "dates")
         const isAvailable = dates.every((roomdate) => {
+            console.log(roomdate, "roomdate")
             if (!roomnumber?.unavialableDates?.includes(roomdate)) {
                 return false;
             } else {
@@ -82,7 +109,7 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
             console.log(date[0].startDate)
             console.log(date[0].endDate)
             const booked = await axios.post(
-                `$${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/create_payment_intent`,
+                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/create_payment_intent`,
                 {
                     user: currentUser?.email,
                     hotelid: id,
@@ -108,7 +135,7 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
 
             return booked;
         } catch (err) {
-            console.log(err);
+            console.log(err, "RROE ");
         }
     };
 
@@ -117,10 +144,17 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
 
     const totalprice = () => {
         let total = 0;
+        console.log(selectedrooms, "selectedrooms")
         selectedrooms?.forEach((roomNumberId) => {
-            const room = data?.roomslist?.find((room) =>
-                room.roomNumbers.some((roomNumber) => roomNumber._id === roomNumberId)
+            console.log(data)
+            const room = data?.roomslist?.find((room) => {
+                console.log(room)
+
+                return room?.roomNumbers?.some((roomNumber) => roomNumber._id === roomNumberId)
+            }
+
             );
+            console.log(room, 'room')
             const roomprice = room?.price;
             total += roomprice;
         });
@@ -153,10 +187,10 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
             const booked = await saveBooking();
 
             const bookingdata = {
-                booked: booked.data.newbooking,
+                booked: booked?.data?.newbooking,
                 price,
                 hotelname,
-                client_secret: booked.data.clientSecret
+                client_secret: booked?.data?.clientSecret
             };
 
 
@@ -182,6 +216,7 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
             toast.error(' please select a room 🤔 🤔')
             return;
         }
+        console.log('here')
 
         setBookingDetails({
             hotelname,
@@ -226,7 +261,7 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
                 </button>
                 {data?.roomslist?.map((room) => {
                     return (
-                        <div className="reservationCard__room" key={room._id}>
+                        <div className="reservationCard__room" key={room?._id}>
                             <h3 className="reservationCard__roomtype">
                                 Room Type: {room?.title}
                             </h3>

@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import Header from "../../components/header/Header"
 import { useLocation, useNavigate } from "react-router-dom"
 import "./HotelList.scss"
-import { format } from "date-fns"
+import { format, set } from "date-fns"
 import { DateRange } from "react-date-range"
 import Person_info from "../../components/person_info/Person_info"
 import { SearchItem } from "../../components/searchitem/SearchItem"
@@ -10,6 +10,8 @@ import Footer from "../../components/footer/Footer"
 import useFetch from "../../customhooks/useFetch"
 import { useContext } from "react"
 import { Searchcontext } from "../../context/Searchcontext"
+import Spinner from "../../utils/spinner/Spinner"
+import { useEffect } from "react"
 
 const HotelList = () => {
   const location = useLocation()
@@ -20,6 +22,7 @@ const HotelList = () => {
       key: "selection",
     },
   ])
+  console.log(date)
   const { dispatch, service_info: contextService_info } = useContext(Searchcontext)
   const type = location?.state?.type
   console.log(type, "hotel list page 0")
@@ -33,6 +36,7 @@ const HotelList = () => {
   })
   const [showData_picker, setShowDate_picker] = useState(false)
   const [showPerson_picker, setShowPerson_picker] = useState(false)
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   ///////////////////////////////////////////////////////////
   console.log(destination, service_info, ", hotel list page 1")
@@ -41,6 +45,12 @@ const HotelList = () => {
     }&max=${service_info?.maxprice || 999999}
       &adults=${service_info?.adults}&child=${service_info?.child}&rooms=${service_info?.rooms}&type=${type}`
   )
+
+  // opening window on top
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   console.log(data, "hotel list page")
 
   console.log(service_info, date, destination, "hotel list page")
@@ -85,31 +95,40 @@ const HotelList = () => {
   const handlebooking = (id, item) => {
     console.log(destination)
     console.log(date)
-    dispatch({
-      type: "NEW_SEARCH",
-      payload: {
-        destination,
-        date, service_info,
+    try {
+      setLoading(true)
+      dispatch({
+        type: "NEW_SEARCH",
+        payload: {
+          destination,
+          date, service_info,
 
-      }
-    })
-    setTimeout(() => {
-      console.log("navigate")
-      navigate(`/hotels/${id}`, {
-        state: {
-          hotel: item
         }
       })
+      setTimeout(() => {
+        console.log("navigate")
+        setLoading(false)
+        navigate(`/hotels/${id}`, {
+          state: {
+            hotel: item
+          }
+        })
 
-    }, 4000)
+      }, 4000)
+    }
+    catch (err) {
+      console.log(err, "hotellist page 9")
+
+
+    }
   }
-
 
   ////////////////////////////////////////////////////////////
   return (
     <>
       <Header type="noshow" />
       <div className="hotellist">
+
         <div className="hotellist_container">
           <div className="search-form">
             <h2> Search</h2>
@@ -134,8 +153,8 @@ const HotelList = () => {
               </div>
 
               <span type="text" id="date_picker_span" className="date_input">
-                {`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                  date[0].endDate,
+                {`${format(date[0]?.startDate, "dd/MM/yyyy")} to ${format(
+                  date[0]?.endDate,
                   "dd/MM/yyyy"
                 )}`}
               </span>
@@ -213,11 +232,17 @@ const HotelList = () => {
               Search
             </button>
           </div>
-          <div className="searchlist">
-            {data?.hotels.length !== 0 &&
-              data?.hotels?.map((item) => (
-                <SearchItem item={item} key={item._id} handlebooking={handlebooking} />
-              ))}
+
+          <div className={loading ? "searchlist_loading" : "searchlist"}  >
+            {
+              loading ? <Spinner /> :
+                <>
+                  {data?.hotels.length !== 0 &&
+                    data?.hotels?.map((item) => (
+                      <SearchItem item={item} key={item._id} handlebooking={handlebooking} />
+                    ))}</>
+            }
+
           </div>
         </div>
       </div>

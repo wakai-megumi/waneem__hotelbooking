@@ -1,11 +1,16 @@
 .hotel-skeleton {
   padding: 20px;
   background-color: #f7f7f7;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hotel-skeleton-container {
   display: flex;
   flex-direction: column;
+  width: 80%;
 }
 
 .hotel-info-section {

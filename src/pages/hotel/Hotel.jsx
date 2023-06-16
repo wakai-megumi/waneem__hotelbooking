@@ -8,12 +8,12 @@ import { Searchcontext } from "../../context/Searchcontext";
 import Footer from "../../components/footer/Footer";
 import { ReservationCard } from "../../components/reservationCard/ReservationCard";
 import HotelSkeleton from "./hoteskelton/HotelSkelton";
+import { useRef } from "react";
 
 const Hotel = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showContent, setShowContent] = useState(false);
-
   const hoteldata_from_state = location.state?.hotel;
   const id = location.pathname.split("/")[2];
   const hoteldata = hoteldata_from_state
@@ -35,22 +35,27 @@ const Hotel = () => {
   const handleReserve = () => {
     if (isNaN(datediff) || datediff === 0 || isNaN(hoteldata?.cheapestprice) || isNaN(service_info.rooms)) {
       alert("Please select valid data again.");
-      navigate(- 1);
+      navigate(-1);
+    } else {
+      if (localStorage.getItem("currentUser")) {
+        setOpenReservationCard(true);
+      } else {
+        navigate("/login");
+      }
     }
-    else {
-      localStorage.getItem("currentUser")
-        ? setOpenReservationCard(true)
-        : navigate("/login");
-    }
-
-
   };
+
   useEffect(() => {
     if (hoteldata) {
       setShowContent(true);
+
     }
+
   }, [hoteldata]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
   return (
