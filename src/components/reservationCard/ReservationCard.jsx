@@ -193,6 +193,7 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
                 hotelname,
                 client_secret: booked?.data?.clientSecret
             };
+            setbooking(false)
 
 
             setBookingDetails(bookingdata);
