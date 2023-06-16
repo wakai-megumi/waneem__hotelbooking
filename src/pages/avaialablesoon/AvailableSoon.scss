@@ -13,6 +13,10 @@
     flex-wrap: wrap;
     gap: 2rem;
     animation: huechange 10s infinite linear;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, -50%);
+    // position: absolute;
   }
 
   @keyframes huechange {
@@ -21,6 +25,14 @@
     }
     100% {
       filter: hue-rotate(360deg);
+    }
+  }
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
     }
   }
 }

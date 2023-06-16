@@ -18,8 +18,7 @@ const ContactPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Send the form data to your backend or perform any desired action
-        toast.error('sdfs')
+        // after making all req we can do this if not , but it is ok for now it works just need an api to converse with
         toast.success('Your message has been sent. We will get back to you soon!');
         setFormData({
             name: '',

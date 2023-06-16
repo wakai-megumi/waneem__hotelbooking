@@ -9,7 +9,7 @@ const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod lorem eget tincidunt semper.",
+            comment: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod.",
             name: "John Doe",
             designation: "CEO, Company A"
         },
@@ -29,7 +29,8 @@ const Testimonials = () => {
             name: "Jane Smith",
             designation: "CTO, Company v"
         },
-        // Add more testimonial objects as needed
+        // use my own data after i will create the review section
+
     ];
     useEffect(() => {
         const interval = setInterval(() => {

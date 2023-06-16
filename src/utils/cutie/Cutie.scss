@@ -23,6 +23,7 @@
   height: 10%;
   background-color: #1e1818;
   border-radius: 50%;
+  animation: eye 1s infinite alternate;
 
   .left {
     left: 20%;
@@ -68,7 +69,8 @@
   right: 5%;
   width: 10px;
   height: 40px;
-  background-color: #ffffff;
+  background-color: #300a0a;
+  border-radius: 50%;
   transform: rotate(20deg);
   animation: slide 1s infinite alternate;
 }
@@ -81,6 +83,14 @@
   }
 }
 
+@keyframes eye {
+  0% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
 @keyframes slide {
   0% {
     transform: translateX(0px);

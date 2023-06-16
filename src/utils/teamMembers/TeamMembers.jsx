@@ -7,7 +7,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from 'react-icons/fa';
 const TeamMembers = () => {
     const teamMembers = [
         { name: 'ChatGpt', position: 'Stress Handler', photo: 'jane-smith.jpg', socialMedia: { facebook: 'https://www.facebook.com/CHATGPT', twitter: null, instagram: 'https://www.instagram.com/CHATGPT' } },
-        { name: 'Tarun Sharma', position: 'CEO', photo: 'john-doe.jpg', socialMedia: { facebook: null, twitter: 'https://www.twitter.com/TARUN', instagram: 'https://www.instagram.com/TARUN' } },
+        { name: 'Tarun Sharma', position: 'CEO', photo: 'john-doe.jpg', socialMedia: { facebook: null, twitter: 'https://www.twitter.com/', instagram: 'https://www.instagram.com/' } },
         { name: 'Youtube', position: 'Project Manager', photo: 'mike-johnson.jpg', socialMedia: { facebook: 'https://www.facebook.com/YOUTUBE', twitter: 'https://www.twitter.com/YOUTUBE', instagram: null } },
     ];
 

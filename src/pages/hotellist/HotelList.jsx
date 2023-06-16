@@ -22,7 +22,7 @@ const HotelList = () => {
   ])
   const { dispatch, service_info: contextService_info } = useContext(Searchcontext)
   const type = location?.state?.type
-  console.log(type)
+  console.log(type, "hotel list page 0")
   const [destination, setDestination] = useState(location?.state?.destination)
   const [service_info, setService_info] = useState({
     adults: location?.state?.service_info?.adults || contextService_info.adults,
@@ -31,22 +31,21 @@ const HotelList = () => {
     minprice: 1,
     maxprice: 9999, //default case for hotels like taking max limit of price approx 1 million
   })
-  // console.log(location?.state?.service_info)
   const [showData_picker, setShowDate_picker] = useState(false)
   const [showPerson_picker, setShowPerson_picker] = useState(false)
   const navigate = useNavigate()
   ///////////////////////////////////////////////////////////
-  console.log(destination, service_info,)
+  console.log(destination, service_info, ", hotel list page 1")
   const { data, refetch } = useFetch(
     `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/get?destination=${destination}&min=${service_info?.minprice
     }&max=${service_info?.maxprice || 999999}
       &adults=${service_info?.adults}&child=${service_info?.child}&rooms=${service_info?.rooms}&type=${type}`
   )
-  console.log(data)
+  console.log(data, "hotel list page")
 
-  console.log(service_info, date, destination)
+  console.log(service_info, date, destination, "hotel list page")
 
-  /////////////////////////////////////////////////--***************************
+  //////////////////////// /////////////////////////--***************************
   const show_picker = () => {
 
     setShowDate_picker(!showData_picker)

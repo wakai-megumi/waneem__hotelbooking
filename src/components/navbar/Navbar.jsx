@@ -1,24 +1,33 @@
-import React, { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import React, { useContext, useEffect, useState } from "react"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import "./Navbar.scss"
+import { Authcontext } from "../../context/Authcontext"
 const Navbar = () => {
   /////////////////////////////////////
   //temporary condition sections
 
 
-  const [currentUser, setCurrentUser] = useState(null);
   /////////////////
-
+  const { currentUser } = useContext(Authcontext)
+  console.log(currentUser)
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("currentUser"))
-    setCurrentUser(user)
-    console.log(user)
-  }, [setCurrentUser])
+    // Function to fetch the current user 
+    const fetchCurrentUser = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("currentUser"));
+        console.log(user);
+      } catch (error) {
+        console.log("Error fetching current user:", error);
+      }
+    };
 
+    fetchCurrentUser();
+  }, []);
   const navigate = useNavigate()
   const handlelogout = () => {
     localStorage.removeItem("currentUser")
     window.location.reload()
+    navigate("/")
   }
   //////////////////////////////////////
   return (
@@ -57,7 +66,6 @@ const Navbar = () => {
             </Link>
           )}
 
-          {/* upto here -------------------------------- */}
         </div>
       </div>
     </nav>

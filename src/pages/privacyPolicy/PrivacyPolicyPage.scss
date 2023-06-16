@@ -1,8 +1,10 @@
 .privacy-policy-page {
-  .container {
+  .privacy_policy_container {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px;
+    display: flex;
+    flex-direction: column;
 
     .title {
       font-size: 32px;

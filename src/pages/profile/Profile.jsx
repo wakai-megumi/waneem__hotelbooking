@@ -7,14 +7,15 @@ import { FaEdit } from "react-icons/fa";
 
 import "./Profile.scss";
 import { toast } from "react-toastify";
+import Spinner from "../../utils/spinner/Spinner";
 
 const UserProfile = () => {
     const { currentUser } = useContext(Authcontext);
     const [loading, setLoading] = useState(true);
     const [loadingImage, setLoadingImage] = useState(true);
     const [updateSuccess, setUpdateSuccess] = useState(false);
-    const id = currentUser.user._id;
-    console.log(id);
+    const userid = currentUser._id;
+    console.log(userid);
     const [userData, setUserData] = useState([
         {
             editing: false,
@@ -72,12 +73,12 @@ const UserProfile = () => {
     //     api_secret: 'xeyNxamtltv3rR9KAsSObbJOug8'
     // });
     useEffect(() => {
-        console.log(id);
+        console.log(userid);
         const fetchUserData = async () => {
             try {
                 const response = await axios.get(
 
-                    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/user/get/${id}`,
+                    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/user/get/${userid}`,
                     { withCredentials: true }
                 );
 
@@ -204,9 +205,9 @@ const UserProfile = () => {
 
     const handleSaveAll = async () => {
         try {
-            // setUpdateSuccess(true);
+            setUpdateSuccess(true);
             const response = await axios.put(
-                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/user/update/${id}`,
+                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/user/update/${userid}`,
                 {
                     username: userData[1].value,
                     email: userData[2].value,
@@ -215,6 +216,7 @@ const UserProfile = () => {
                     address: userData[5].value,
                     phone: userData[6].value,
                     profileimage: userData[0].value,
+                    id: currentUser._id
                 },
                 {
                     withCredentials: true,
@@ -236,10 +238,11 @@ const UserProfile = () => {
     return (
         <div className="user-profile">
             {loading ? (
-                <div className="loading">Loading...</div>
+                <Spinner />
             ) : (
                 <>
                     <div className="wrapper">
+
                         <table>
                             <tbody>
                                 {userData.map((user, index) => (

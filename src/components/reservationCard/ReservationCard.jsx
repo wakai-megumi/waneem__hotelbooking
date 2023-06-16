@@ -13,10 +13,13 @@ import Spinner from "../../utils/spinner/Spinner";
 
 export const ReservationCard = ({ id, setopen, hotelname }) => {
     const navigate = useNavigate();
+    console.log(id, "id hotel page 4")
     const [selectedrooms, setselectedrooms] = useState([]);
     const { data, error, loading } = useFetch(
-        `${import.meta.env.VITE_REACT_SERVER_URL}hotels/room/${id}`
+        `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/room/${id}`
     );
+    console.log(import.meta.env.VITE_REACT_SERVER_URL, "data hotel page 0")
+    console.log(data, "data hotel page 0")
     const { date, service_info } = useContext(Searchcontext);
     const { currentUser } = useContext(Authcontext);
     const [booking, setbooking] = useState(false);
@@ -232,6 +235,10 @@ export const ReservationCard = ({ id, setopen, hotelname }) => {
                                 Rs {room?.price} only
                             </h3>
                             <div className="roomnumber">
+                                {/*  done change to include that if no room is availabel then you can just show that no roomavailable for this date */}
+
+
+
                                 {room?.roomNumbers?.map((roomnumber) => {
                                     return (
                                         <div
