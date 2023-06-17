@@ -1,5 +1,5 @@
 import React from "react";
-import "./featured.scss";
+import "./Featured.scss";
 import useFetch from "../../customhooks/useFetch";
 import { parse } from "date-fns";
 import { toast } from 'react-toastify';
