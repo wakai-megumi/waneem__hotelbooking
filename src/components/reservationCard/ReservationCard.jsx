@@ -130,11 +130,15 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
                 setbooking(false);
                 setopen(false);
             } else {
+                setbooking(false);
+                setopen(false);
+
                 alert("Something went wrong");
             }
 
             return booked;
         } catch (err) {
+            setbooking(false);
             console.log(err, "RROE ");
         }
     };
@@ -182,6 +186,9 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
                     dates,
                     selectedrooms,
                     hotelid: id,
+                },
+                {
+                    withCredentials: true
                 }
             );
             console.log(response)

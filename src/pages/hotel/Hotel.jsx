@@ -9,14 +9,16 @@ import Footer from "../../components/footer/Footer";
 import { ReservationCard } from "../../components/reservationCard/ReservationCard";
 import HotelSkeleton from "./hoteskelton/HotelSkelton";
 import { useRef } from "react";
+import Reviews from "../../components/review/Reviews.jsx"
+import axios from "axios";
 
 const Hotel = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [showContent, setShowContent] = useState(false);
   const hoteldata_from_state = location.state?.hotel;
-  const id = location.pathname.split("/")[2];
-  const hoteldata = hoteldata_from_state
+  const id = location?.pathname?.split("/")[2];
+  const hoteldata = hoteldata_from_state;
 
   const [openReservationCard, setOpenReservationCard] = useState(false);
   const [openGallery, setOpenGallery] = useState(false);
@@ -33,7 +35,12 @@ const Hotel = () => {
   };
 
   const handleReserve = () => {
-    if (isNaN(datediff) || datediff === 0 || isNaN(hoteldata?.cheapestprice) || isNaN(service_info.rooms)) {
+    if (
+      isNaN(datediff) ||
+      datediff === 0 ||
+      isNaN(hoteldata?.cheapestprice) ||
+      isNaN(service_info.rooms)
+    ) {
       alert("Please select valid data again.");
       navigate(-1);
     } else {
@@ -45,18 +52,19 @@ const Hotel = () => {
     }
   };
 
+
+
+
   useEffect(() => {
     if (hoteldata) {
       setShowContent(true);
-
     }
-
   }, [hoteldata]);
 
   useEffect(() => {
+
     window.scrollTo(0, 0);
   }, []);
-
 
   return (
     <>
@@ -65,7 +73,6 @@ const Hotel = () => {
       {!showContent ? (
         <HotelSkeleton />
       ) : (
-
         <>
           <div className="hotel">
             <div className="hotel_container">
@@ -87,8 +94,8 @@ const Hotel = () => {
                   </h3>
                   <h3 className="hotel_price">
                     Book a stay over{" "}
-                    <span className="price">{hoteldata?.cheapestprice} Rs</span> and
-                    get a free <span className="features">airport taxi</span>
+                    <span className="price">{hoteldata?.cheapestprice} Rs</span>{" "}
+                    and get a free <span className="features">airport taxi</span>
                   </h3>
                 </div>
               </div>
@@ -105,14 +112,16 @@ const Hotel = () => {
                     </div>
                   ))}
                 </div>
-              ) :
-                (
-                  <div className="no photos">  No photos available for this hotel , feel free to go ahead you can check out the reviews</div>
-                )}
+              ) : (
+                <div className="no photos">
+                  No photos available for this hotel, feel free to go ahead and
+                  check out the reviews
+                </div>
+              )}
 
               <div className="hotel_detail_section">
                 <div className="hotel_detail">
-                  <h3 className="hotel_title">  {hoteldata?.title}🌞</h3>
+                  <h3 className="hotel_title"> {hoteldata?.title}🌞</h3>
                   <p className="hotel_description">{hoteldata?.description}</p>
                 </div>
 
@@ -120,14 +129,11 @@ const Hotel = () => {
                   {hoteldata?.shorttitle && (
                     <>
                       <h3 className="short_title">{hoteldata?.shorttitle}</h3>
-                      <p className="short_desc">
-                        {hoteldata?.shortdesc}
-                      </p>
+                      <p className="short_desc">{hoteldata?.shortdesc}</p>
                     </>
                   )}
 
                   <div className="price_section">
-
                     <h3 className="full_price">
                       Rs {datediff * hoteldata?.cheapestprice * service_info.rooms} 💵
                     </h3>
@@ -138,6 +144,13 @@ const Hotel = () => {
                     Reserve Now
                   </button>
                 </div>
+              </div>
+              <div className="reviews-section">
+                <h2 className="section-title">Reviews</h2>
+                <div className="review-cards">
+                  <Reviews hotelId={id} hotelName={hoteldata?.name} />
+                </div>
+
               </div>
             </div>
 
@@ -173,8 +186,14 @@ const Hotel = () => {
             )}
 
             {openReservationCard && (
-              <ReservationCard setopen={setOpenReservationCard} id={id} hotelname={hoteldata?.name} />
+              <ReservationCard
+                setopen={setOpenReservationCard}
+                id={id}
+                hotelname={hoteldata?.name}
+              />
             )}
+
+
           </div>
         </>
       )}

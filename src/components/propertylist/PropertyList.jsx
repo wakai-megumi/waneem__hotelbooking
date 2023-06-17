@@ -76,7 +76,7 @@ const PropertyList = () => {
 
   return (
     <div className="propertylist-container">
-      {isPending ? (
+      {isPending || data?.hotelTypes.length === 0 || data === null ? (
         <PropertyListSkeleton />
       ) : (
         data?.hotelTypes?.map((item, index) => (

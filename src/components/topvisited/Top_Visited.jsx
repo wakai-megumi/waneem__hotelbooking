@@ -37,7 +37,7 @@ const TopVisited = () => {
   };
 
   const renderTopVisitedCards = () => {
-    if (isPending) {
+    if (isPending || data?.hotels?.length === 0 || data === null) {
       return [...Array(4)].map((_, index) => (
         <div className="topvisited-card skeleton-card" key={index}></div>
       ));

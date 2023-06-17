@@ -1,6 +1,9 @@
 import React from "react";
 import "./BookingCard.scss";
 import propTypes from "prop-types";
+import ReviewForm from "./ReviewForm";
+import { useState } from "react";
+import axios from "axios";
 const BookingCard = ({ booking, handleEditDelete }) => {
     const { hotel, checkInDate, checkOutDate, guests, roomN, ReservationAmount, TotalPrice } = booking;
     const options = {
@@ -8,7 +11,9 @@ const BookingCard = ({ booking, handleEditDelete }) => {
         month: "numeric",
         day: "numeric"
     }
-    console.log(booking._id)
+    const [open_reveiw_form, SetOpen_review_form] = useState(false)
+    const user = JSON.parse(localStorage.getItem("currentUser"))
+    console.log(user)
     const checkIn = new Date(checkInDate).toLocaleDateString("en-IN", options)
     const checkOut = new Date(checkOutDate).toLocaleDateString("en-IN", options)
     // checkindate , checkoutdate
@@ -40,6 +45,37 @@ const BookingCard = ({ booking, handleEditDelete }) => {
 
         handleEditDelete("delete", booking._id, dates)
     }
+
+    const handleReviewSubmit = async (reviewData) => {
+        try {
+            const { review, rating, title } = reviewData
+            const reviewPayload = {
+                user: user._id,
+                hotelid: booking.hotelid,
+                review,
+                rating,
+                title: title,
+                createdAt: new Date(),
+                updatedAt: new Date(),
+                username: user?.username,
+                userimage: user?.profileimage
+            };
+
+            console.log(reviewPayload)
+            const response = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/reviews`, reviewPayload, {
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                withCredentials: true,
+
+            })
+            SetOpen_review_form(false)
+            console.log(response)
+
+        } catch (error) {
+            console.error("An error occurred while submitting the review", error);
+        }
+    };
 
     return (
         <div className="booking-card">
@@ -93,6 +129,17 @@ const BookingCard = ({ booking, handleEditDelete }) => {
                 <button className="booking-card__button" onClick={handleDelete}>Cancel</button>
             </div>
 
+
+            <div className="booking-card__review">
+                <h3>Write a Review  <button className="reviewbutton" onClick={() => SetOpen_review_form(!open_reveiw_form)}> Review</button></h3>
+                {open_reveiw_form && (booking.status === "Approved" ? (
+                    <ReviewForm onSubmit={handleReviewSubmit} />
+                ) : (
+                    <p>Booking should be approved to write a review</p>
+                ))}
+
+
+            </div>
         </div>
     );
 };

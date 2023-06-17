@@ -1,5 +1,5 @@
 import React from "react";
-import "./Featured.scss";
+import "./featured.scss";
 import useFetch from "../../customhooks/useFetch";
 import { parse } from "date-fns";
 import { toast } from 'react-toastify';
@@ -13,7 +13,6 @@ import shimla from "./featured_images/shimla.jpeg"
 
 // images data
 const images = [chandigarhImage, shahpur, shimla]
-const error_messages = ["Operation `hotels.countDocuments()` buffering timed out after 10000ms"]
 // Skeleton Component
 const FeaturedSkeleton = () => {
   return (
@@ -29,12 +28,11 @@ const FeaturedSkeleton = () => {
 
 const Featured = () => {
   const { data, isPending, error } = useFetch(
-    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/countbycity?cities=shimla,chandigarh,shahpur`
+    `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/countbycity/?cities=jaipur,aspen,miami`
 
   );
 
-
-  console.log(data, error)
+  console.log(data)
   const { dispatch } = useContext(Searchcontext);
   const navigate = useNavigate();
 
@@ -77,7 +75,7 @@ const Featured = () => {
 
   return (
     <div className="featured-container">
-      {isPending ? (
+      {isPending || data?.list.length === 0 || data === null ? (
         <FeaturedSkeleton />
       ) : (
         <div className="featured-container">

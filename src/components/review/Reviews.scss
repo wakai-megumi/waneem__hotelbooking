@@ -1,0 +1,27 @@
+.review-container {
+  margin-bottom: 20px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  height: 100%;
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .card-container {
+    display: flex;
+    width: 100%;
+  }
+  .slider {
+    // display: flex;
+    padding: 9px;
+  }
+
+  p {
+    margin-top: 10px;
+    text-align: center;
+  }
+}

@@ -46,7 +46,7 @@ const Login = () => {
           },
         })
       dispatch({ type: "SUCCESS", payload: res?.data?.user })
-      navigate(-1, { replace: true })
+      navigate('/')
     } catch (err) {
       console.log(err, "by here this error")
       dispatch({ type: "FAILURE", payload: err.response.data.message })

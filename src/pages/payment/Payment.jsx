@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from './checkoutform/CheckoutForm';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import "./Payment.scss"
 import Spinner from '../../utils/spinner/Spinner';
 
@@ -29,6 +29,7 @@ export const Payment = () => {
 
     }, [])
 
+    const navigate = useNavigate()
     ///////////////////
     const appearance = {
         theme: 'stripe',
@@ -36,12 +37,17 @@ export const Payment = () => {
     const options = {
         clientSecret,
         appearance,
-    };
+    }
 
 
     return (
         <div className="payment">
             <h2> Please dont refresh the page</h2>
+            <h2> if there are issues while making payment , you can jump to
+
+                <span style={{ color: "green", cursor: "pointer" }}
+                    onClick={() => navigate('/bookings')}>  my bookings page</span> ,
+                as you booking requested is succcesfully created , you can wait for confiramtion from hotel</h2>
             <div className="payment__details">
 
                 {fakeloading ? <Spinner />
@@ -60,7 +66,7 @@ export const Payment = () => {
                     </>
                 }
             </div>
-        </div>
+        </div >
     )
 }
 
