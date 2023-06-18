@@ -71,4 +71,4 @@ This project is licensed under the MIT License.
 
 The dependencies listed above are used to build the front-end of the project. They provide functionality for things like making HTTP requests, managing images, working with dates and times, building user interfaces, and processing payments.
 
-(*__-__*) if you like the project then hit the star and (*___-__*)
+## * if you like the project then hit the star and  ## *
