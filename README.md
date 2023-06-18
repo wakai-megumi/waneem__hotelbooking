@@ -1,6 +1,7 @@
 <div align="center">
   <h1>🏨 Hotel Booking Project</h1>
   <p>A simple hotel booking system that allows users to search for hotels, book rooms, and view their booking history.</p>
+  <p>React(vite) , javascript are used in building this project </p>
 </div>
 
 ## ✨ Features
@@ -33,22 +34,19 @@ This project also requires the following packages:
 ## 🚀 Installation
 
 To install this project, run the following command:
-
+```shell
 npm install
-
-arduino
-Copy code
+```
 
 ## 📖 Usage
 
 To use this project, run the following command:
-
+```shell
 npm start
+```
 
-vbnet
-Copy code
 
-This will start the development server on port 3000. You can then access the project at http://localhost:3000.
+This will start the development server on port 3000. You can then access the project at http://localhost:5173.
 
 ## 🤝 Contribution Guidelines
 
