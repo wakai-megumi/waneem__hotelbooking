@@ -31,6 +31,7 @@ This project also requires the following packages:
 - React-dom
 - Stripe
 
+Visit their official documentation in case for any reference 
 ## 🚀 Installation
 
 To install this project, run the following command:
@@ -46,7 +47,8 @@ npm start
 ```
 
 
-This will start the development server on port 3000. You can then access the project at http://localhost:5173.
+This will start the development server on port 5173. You can then access the project at http://localhost:5173. 
+--ports may vary
 
 ## 🤝 Contribution Guidelines
 
@@ -55,6 +57,7 @@ If you would like to contribute to this project, please follow the following gui
 1. Fork the project on GitHub.
 2. Make your changes to the code.
 3. Submit a pull request.
+
 
 ## 📄 License
 
@@ -67,3 +70,5 @@ This project is licensed under the MIT License.
 - The admin portal is used to manage the hotel booking system.
 
 The dependencies listed above are used to build the front-end of the project. They provide functionality for things like making HTTP requests, managing images, working with dates and times, building user interfaces, and processing payments.
+
+(*__-__*) if you like the project then hit the star and (*___-__*)
