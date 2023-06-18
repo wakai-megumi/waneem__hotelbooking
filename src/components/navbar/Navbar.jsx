@@ -49,7 +49,9 @@ const Navbar = () => {
           <Link to="/contact_page" className="nav_link link">
             Contact
           </Link>
-
+          <Link to="/bookings" className="nav_link link">
+            Bookings
+          </Link>
           {currentUser ? (
             <>
               <div className="user_image" onClick={() => navigate(`/profile/${currentUser._id}`)}>

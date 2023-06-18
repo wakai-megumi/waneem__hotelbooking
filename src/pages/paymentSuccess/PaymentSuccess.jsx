@@ -9,11 +9,15 @@ const PaymentSuccess = () => {
     const params = new URLSearchParams(search)
     const payment_intent = params.get('payment_intent')
     console.log(payment_intent)
+    const user = JSON.parse(localStorage.getItem("currentUser"))
+    const userid = user._id
     useEffect(() => {
 
         const updateBooking = async () => {
             try {
-                const res = await axios.put(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/confirmReservation`, { payment_intent: payment_intent })
+                const res = await axios.put(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/confirmReservation/${userid}`, { payment_intent: payment_intent }, {
+                    withCredentials: true
+                })
                 setTimeout(() => {
                     navigate('/bookings', { replace: true })
 

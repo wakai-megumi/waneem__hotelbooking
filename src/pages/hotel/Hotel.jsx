@@ -135,13 +135,13 @@ const Hotel = () => {
 
                   <div className="price_section">
                     <h3 className="full_price">
-                      Rs {datediff * hoteldata?.cheapestprice * service_info.rooms} 💵
+                      {service_info.rooms} rooms
                     </h3>
                     <h2 className="stay_details">{datediff} nights</h2>
                   </div>
 
                   <button className="reserve-btn" onClick={handleReserve}>
-                    Reserve Now
+                    💵  Reserve Now
                   </button>
                 </div>
               </div>

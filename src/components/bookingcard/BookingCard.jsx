@@ -4,6 +4,7 @@ import propTypes from "prop-types";
 import ReviewForm from "./ReviewForm";
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 const BookingCard = ({ booking, handleEditDelete }) => {
     const { hotel, checkInDate, checkOutDate, guests, roomN, ReservationAmount, TotalPrice } = booking;
     const options = {
@@ -13,7 +14,7 @@ const BookingCard = ({ booking, handleEditDelete }) => {
     }
     const [open_reveiw_form, SetOpen_review_form] = useState(false)
     const user = JSON.parse(localStorage.getItem("currentUser"))
-    console.log(user)
+    const userid = user._id
     const checkIn = new Date(checkInDate).toLocaleDateString("en-IN", options)
     const checkOut = new Date(checkOutDate).toLocaleDateString("en-IN", options)
     // checkindate , checkoutdate
@@ -62,7 +63,7 @@ const BookingCard = ({ booking, handleEditDelete }) => {
             };
 
             console.log(reviewPayload)
-            const response = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/reviews`, reviewPayload, {
+            const response = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/hotels/reviews/${userid}`, reviewPayload, {
                 headers: {
                     "Content-Type": "application/json",
                 },
@@ -70,9 +71,12 @@ const BookingCard = ({ booking, handleEditDelete }) => {
 
             })
             SetOpen_review_form(false)
+            toast.success("Review submitted successfully")
             console.log(response)
 
         } catch (error) {
+            SetOpen_review_form(false)
+            toast.error("An error occurred while submitting the review, please try again later")
             console.error("An error occurred while submitting the review", error);
         }
     };

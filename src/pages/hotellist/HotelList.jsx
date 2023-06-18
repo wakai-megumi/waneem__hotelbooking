@@ -32,7 +32,7 @@ const HotelList = () => {
     child: location?.state?.service_info?.child || contextService_info.child,
     rooms: location?.state?.service_info?.rooms || contextService_info.rooms,
     minprice: 1,
-    maxprice: 9999, //default case for hotels like taking max limit of price approx 1 million
+    maxprice: 99999 //default case for hotels like taking max limit of price approx 1 million
   })
   const [showData_picker, setShowDate_picker] = useState(false)
   const [showPerson_picker, setShowPerson_picker] = useState(false)

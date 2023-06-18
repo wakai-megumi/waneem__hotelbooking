@@ -2,17 +2,14 @@ import React, { useContext, useState, useEffect } from "react";
 import { Authcontext } from "../../context/Authcontext";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
-// import cloudinary from "cloudinary/lib/cloudinary";
-// import crypto from "crypto";
-
+import noavatar from "../../assets/noavatar.jpg"
 import "./Profile.scss";
 import { toast } from "react-toastify";
 import Spinner from "../../utils/spinner/Spinner";
-
 const UserProfile = () => {
     const { currentUser } = useContext(Authcontext);
     const [loading, setLoading] = useState(true);
-    const [loadingImage, setLoadingImage] = useState(true);
+    const [loadingImage, setLoadingImage] = useState(false);
     const [updateSuccess, setUpdateSuccess] = useState(false);
     const userid = currentUser._id;
     console.log(userid);
@@ -67,11 +64,7 @@ const UserProfile = () => {
             id: "phone",
         },
     ]);
-    // cloudinary.config({
-    //     cloud_name: 'wakai-megumi',
-    //     api_key: '832632286875291',
-    //     api_secret: 'xeyNxamtltv3rR9KAsSObbJOug8'
-    // });
+
     useEffect(() => {
         console.log(userid);
         const fetchUserData = async () => {
@@ -118,48 +111,6 @@ const UserProfile = () => {
     };
 
     // ////////////////////////////////////////////////////////////
-    // const generateSHA1 = (data) => {
-    //     const hash = crypto.createHash("sha1");
-    //     hash.update(data);
-    //     return hash.digest("hex");
-    // }
-
-    // const generateSignature = (publicid, apiSecret) => {
-    //     const timestamp = new Date().getTime();
-    //     return `public_id=${publicid}&timestamp=${timestamp}${apiSecret}`;
-    // };
-
-    // const getPublicId = (url) => {
-    //     const parts = url.split("/");
-    //     const lastValueWithExtension = parts[parts.length - 1];
-    //     const lastValue = lastValueWithExtension.split(".")[0];
-    //     return lastValue;
-    // };
-
-    // const deleteImage = async (publicId) => {
-    //     const cloudName = 'wakai-megumi';
-    //     const timestamp = new Date().getTime();
-    //     const apiKey = '832632286875291';
-    //     const apiSecret = 'xeyNxamtltv3rR9KAsSObbJOug8'
-    //     const id = getPublicId(publicId);
-    //     const signature = generateSHA1(generateSignature(id, apiSecret));
-    //     const url = `https://api.cloudinary.com/v1_1/${cloudName}/image/destroy`;
-
-    //     try {
-    //         const response = await axios.post(url, {
-    //             public_id: publicId,
-    //             signature: signature,
-    //             api_key: apiKey,
-    //             timestamp: timestamp,
-    //         });
-
-
-    //         console.error(response);
-
-    //     } catch (error) {
-    //         console.error(error);
-    //     }
-    // };
 
 
     ////////////////////////////////////////////////////////////////////
@@ -187,7 +138,6 @@ const UserProfile = () => {
                 );
 
                 const imageUrl = response.data.url;
-                // await deleteImage(userData[0].value);
 
                 setUserData((prevData) => {
                     const updatedData = [...prevData];
@@ -237,12 +187,12 @@ const UserProfile = () => {
 
     return (
         <div className="user-profile">
+            <h2>User Profile</h2>
             {loading ? (
-                <Spinner />
+                <Spinner fullScreen />
             ) : (
                 <>
-                    <div className="wrapper">
-
+                    <div className="profilewrapper">
                         <table>
                             <tbody>
                                 {userData.map((user, index) => (
@@ -287,11 +237,25 @@ const UserProfile = () => {
                                             <>
                                                 {user.type === "file" ? (
                                                     <td className="info-value">
-                                                        <img
-                                                            src={user.value}
-                                                            alt="Profile"
-                                                            className="profile-image"
-                                                        />
+                                                        {user.value !== "" ? (
+                                                            <>
+                                                                {loadingImage ? (
+                                                                    <Spinner />
+                                                                ) : (
+                                                                    <img
+                                                                        src={user.value}
+                                                                        alt="Profile"
+                                                                        className="profile-image"
+                                                                    />
+                                                                )}
+                                                            </>
+                                                        ) : (
+                                                            <img
+                                                                src={noavatar}
+                                                                alt="no user profile image "
+                                                                className="profile-image"
+                                                            />
+                                                        )}
                                                     </td>
                                                 ) : (
                                                     <td className="info-value">{user.value}</td>
@@ -314,7 +278,16 @@ const UserProfile = () => {
                     </div>
                     <button
                         className="button"
-                        disabled={updateSuccess}
+                        style={{
+                            fontSize: "1rem",
+                            border: "none",
+                            outline: "none",
+                            padding: "5px",
+                            backgroundColor: "green",
+                            color: "white",
+                            marginTop: "20px",
+                        }}
+                        disabled={updateSuccess || loadingImage}
                         onClick={handleSaveAll}
                     >
                         Save

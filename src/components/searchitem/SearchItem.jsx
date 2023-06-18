@@ -40,7 +40,7 @@ export const SearchItem = ({ item, handlebooking }) => {
         </div>
         <div className="si-details">
           <div className="si-details-top">
-            <span className="si-grading">Excellent</span>{" "}
+            <span className="si-grading"></span>{" "}
             {/* change the grading value after uploading the  making the selection component on vasis of ratingvalue -- not doing right now */}
             {item?.rating && <span className="si-rating">{item?.rating}</span>}
           </div>

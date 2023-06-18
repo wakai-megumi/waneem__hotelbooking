@@ -56,7 +56,15 @@ const Login = () => {
   return (
     <form className="login" onSubmit={handlesubmit} autoComplete="new-password">
       <div className="loginwrapper">
-        <h1> Login</h1>
+        <h1> Login </h1>
+
+        <span style={{ display: "flex", justifyContent: 'center' }}>
+
+          <p> click here if-----</p>
+
+          <a className="link" style={{ fontSize: "1rem", color: 'green' }} href={`${import.meta.env.VITE_REACT_ADMIN_URL}`}>  ADMIN</a>
+
+        </span>
         <input
           className="logininput"
           placeholder="username"

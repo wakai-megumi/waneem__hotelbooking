@@ -46,7 +46,6 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/not_found" element={<NotFoundPage />} />
         <Route path="/available_soon" element={<AvailableSoon />} />
 
 
@@ -80,6 +79,7 @@ const App = () => {
 
 
         <Route path="/bookings" element={<Mybooking />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <BackButton />
       <ToastContainer position="top-right" autoClose={3000} hideProgressBar />

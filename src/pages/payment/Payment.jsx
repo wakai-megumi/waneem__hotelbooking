@@ -43,7 +43,7 @@ export const Payment = () => {
     return (
         <div className="payment">
             <h2> Please dont refresh the page</h2>
-            <h2> if there are issues while making payment , you can jump to
+            <h2> if there are issues while making payment ,or dont wanna pay for reservatio ,  you can jump to
 
                 <span style={{ color: "green", cursor: "pointer" }}
                     onClick={() => navigate('/bookings')}>  my bookings page</span> ,

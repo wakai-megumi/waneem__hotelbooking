@@ -13,6 +13,9 @@ const Mybooking = () => {
     const [bookings, setBookings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
+    const user = JSON.parse(localStorage.getItem("currentUser"))
+    const userid = user._id
+    console.log(userid)
     console.log(bookings, "bookings page 0")
     useEffect(() => {
         fetchBookings();
@@ -20,8 +23,10 @@ const Mybooking = () => {
 
     const fetchBookings = async () => {
         try {
-            const response = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/user_booking`, {
+            const response = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/user_booking/all/${userid}`, {
                 useremail: JSON.parse(localStorage.getItem("currentUser")).email,
+            }, {
+                withCredentials: true
             });
 
             setBookings(response.data);
@@ -41,17 +46,19 @@ const Mybooking = () => {
         }
         if (action === "delete") {
             console.log(dates)
-            const response = await axios.delete(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/delete`, {
-                headers: {
-                    'data': JSON.stringify({
-                        id: bookingId,
-                        dates: dates
-                    })
-                }
-            },
+            const response = await axios.delete(
+                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/delete/${userid}`,
                 {
+                    headers: {
+                        'data': JSON.stringify({
+                            id: bookingId,
+                            dates: dates
+                        })
+                    },
                     withCredentials: true
-                })
+                }
+            );
+
 
             if (response.data.success === true) {
                 const RemainingBookings = bookings.filter((booking) => booking._id !== bookingId)

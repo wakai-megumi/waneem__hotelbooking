@@ -30,6 +30,7 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
     const [bookingDetails, setBookingDetails] = useState({});
     const [showConfirmation, setShowConfirmation] = useState(false);
     const [roomdetails, setroomdetails] = useState({});
+    const userid = currentUser?._id;
     const handleselectroom = (e, title) => {
         const number = e.target.parentElement.children[0].innerText;
         const isChecked = e.target.checked;
@@ -109,7 +110,7 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
             console.log(date[0].startDate)
             console.log(date[0].endDate)
             const booked = await axios.post(
-                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/create_payment_intent`,
+                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/booking/create_payment_intent/${userid}`,
                 {
                     user: currentUser?.email,
                     hotelid: id,
@@ -181,7 +182,7 @@ export const ReservationCard = ({ id, setopen, hotelname, ref }) => {
         try {
             console.log('herenew')
             const response = await axios.post(
-                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/room/updatedate/dates`,
+                `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/room/updatedate/dates/${userid}`,
                 {
                     dates,
                     selectedrooms,
