@@ -50,6 +50,29 @@ npm start
 This will start the development server on port 5173. You can then access the project at http://localhost:5173. 
 --ports may vary
 
+## 🌐 Backend API and Admin Site
+
+This project utilizes a separate backend API and an admin site for managing the hotel booking system. Here are the details:
+
+### Backend API
+
+The backend API handles the server-side operations and provides endpoints for hotel management, bookings, and other functionalities. It is hosted at [https://waneem-server.onrender.com](https://waneem-server.onrender.com). The corresponding GitHub repository can be found [here](https://github.com/wakai-megumi/waneem__Server). To run the backend API locally, follow these steps:
+
+1. Clone the backend repository from [GitHub](https://github.com/wakai-megumi/waneem__Server).
+2. Install the required dependencies by running `npm install`.
+3. Configure the necessary environment variables (e.g., database connection, API keys, etc.).
+4. Start the server by running `npm start`.
+
+### Admin Site
+
+The admin site is used to manage the hotel booking system, including hotel and room management, booking approvals, and viewing bookings. It is hosted separately at [https://waneem-admin.onrender.com](https://waneem-admin.onrender.com). The corresponding GitHub repository can be found [here](https://github.com/wakai-megumi/waneem__admin). To access the admin site, follow these steps:
+
+1. Visit [https://waneem-admin.onrender.com](https://waneem-admin.onrender.com) in your web browser.
+2. Log in using your admin credentials.
+3. Use the provided interface to manage hotels, rooms, and bookings.
+
+Feel free to customize and expand upon the backend API and admin site sections to provide more specific instructions or details based on your project setup.
+
 ## 🤝 Contribution Guidelines
 
 If you would like to contribute to this project, please follow the following guidelines:
