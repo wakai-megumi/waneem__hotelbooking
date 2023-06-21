@@ -7,6 +7,10 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 
     .footer-top-section {
       display: flex;
@@ -209,181 +213,135 @@
         }
       }
     }
-  }
-}
 
-@media screen and (max-width: 1024px) {
-  .footer-container {
-    padding: 1rem;
+    @media screen and (max-width: 1024px) {
+      .footer-top-section {
+        flex-direction: column;
 
-    .footer-top-section {
-      flex-direction: column;
+        .footer-top-section_left {
+          text-align: center;
+          margin-bottom: 1rem;
 
-      .footer-top-section_left {
-        text-align: center;
-        margin-bottom: 1rem;
-
-        h1 {
-          font-size: 1.5rem;
-
-          span {
-            font-size: 2.5rem;
-            margin-right: 0.5rem;
-          }
-        }
-      }
-
-      .footer-top-section_right {
-        align-items: center;
-
-        .F_contacts {
-          flex-direction: row;
-          align-items: center;
-          margin-top: 0;
-
-          .F_contact_ {
-            margin-right: 1rem;
-
-            h3 {
-              font-size: 1rem;
-            }
-          }
-        }
-      }
-    }
-
-    .footer-mid-section {
-      flex-direction: column;
-
-      .fm-deal-gallery {
-        margin-bottom: 1rem;
-      }
-
-      .fm-right {
-        align-items: flex-start;
-
-        .fm-info {
-          flex-direction: column;
-          gap: 1.5rem;
-        }
-      }
-    }
-
-    .footer-bottom-section {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-
-      .fb-info {
-        text-align: center;
-        margin-bottom: 1rem;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .footer-container {
-    padding: 0.5rem;
-
-    .footer-top-section {
-      .footer-top-section_left {
-        h1 {
-          font-size: 1.2rem;
-
-          span {
-            font-size: 2rem;
-            margin-right: 0.3rem;
-          }
-        }
-      }
-
-      .footer-top-section_right {
-        .F_contacts {
-          .F_contact_ {
-            h3 {
-              font-size: 0.8rem;
-            }
-          }
-        }
-      }
-    }
-
-    .footer-mid-section {
-      .fm-right {
-        .fm-info {
-          .fm-resource,
-          .fm-product-help {
-            h2 {
-              font-size: 1rem;
-            }
-          }
-        }
-      }
-    }
-
-    .footer-bottom-section {
-      .fb-info {
-        p {
-          font-size: 0.7rem;
-        }
-
-        .consumer {
-          font-size: 0.7rem;
-        }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .footer-container {
-    padding: 0.3rem;
-
-    .footer-top-section {
-      .footer-top-section_left {
-        h1 {
-          font-size: 1rem;
-
-          span {
+          h1 {
             font-size: 1.5rem;
-            margin-right: 0.2rem;
+
+            span {
+              font-size: 2.5rem;
+              margin-right: 0.5rem;
+            }
           }
         }
-      }
 
-      .footer-top-section_right {
-        .F_contacts {
-          .F_contact_ {
-            h3 {
-              font-size: 0.7rem;
+        .footer-top-section_right {
+          align-items: center;
+
+          .F_contacts {
+            flex-direction: row;
+            align-items: center;
+            margin-top: 0;
+
+            .F_contact_ {
+              margin-right: 1rem;
+
+              h3 {
+                font-size: 1rem;
+              }
             }
           }
         }
       }
-    }
 
-    .footer-mid-section {
-      .fm-right {
-        .fm-info {
-          .fm-resource,
-          .fm-product-help {
-            h2 {
-              font-size: 0.8rem;
-            }
+      .footer-mid-section {
+        flex-direction: column;
+
+        .fm-deal-gallery {
+          margin-bottom: 1rem;
+        }
+
+        .fm-right {
+          align-items: flex-start;
+
+          .fm-info {
+            flex-direction: column;
+            gap: 1.5rem;
           }
+        }
+      }
+
+      .footer-bottom-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .fb-info {
+          text-align: center;
+          margin-bottom: 1rem;
         }
       }
     }
 
-    .footer-bottom-section {
-      .fb-info {
-        p {
-          font-size: 0.6rem;
+    @media screen and (max-width: 768px) {
+      .footer-top-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        .footer-top-section_left {
+          h1 {
+            font-size: 1.2rem;
+
+            span {
+              font-size: 2rem;
+              margin-right: 0.3rem;
+            }
+          }
         }
 
-        .consumer {
-          font-size: 0.6rem;
+        .footer-top-section_right {
+          .F_contacts {
+            .F_contact_ {
+              h3 {
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+      }
+
+      .footer-mid-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .fm-right {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .fm-info {
+            .fm-resource,
+            .fm-product-help {
+              h2 {
+                font-size: 1rem;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+
+      .footer-bottom-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        font-size: 1.3rem;
+        .fb-info {
+          p {
+            font-size: 1.3rem;
+          }
+
+          .consumer {
+            margin-left: 0.5rem;
+          }
         }
       }
     }

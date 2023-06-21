@@ -3,10 +3,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 3rem;
 
   .hs-title {
     width: 1200px;
     font-size: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .hs-title {
+      background-image: linear-gradient(
+        to right,
+        rgb(44, 136, 124),
+        #0c0c2c,
+        rgb(154, 151, 151),
+        rgb(154, 151, 151),
+        #0c0c2c,
+        rgb(44, 136, 124)
+      );
+
+      width: 100%;
+      text-align: center;
+      font-size: 1.5rem;
+    }
   }
 }

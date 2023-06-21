@@ -102,6 +102,13 @@
           transform: scale(1.1);
         }
       }
+
+      @media screen and (max-width: 480px) {
+        grid-template-columns: repeat(1, 1fr);
+        .gallery_image {
+          flex: 1 0 100%;
+        }
+      }
     }
   }
 
@@ -261,6 +268,61 @@
     }
     to {
       filter: hue-rotate(360deg);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .hotel_container {
+      width: 90%;
+
+      .hotel_gallery {
+        width: 100%;
+        grid-template-columns: repeat(1, 1fr);
+
+        .gallery_image {
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .hotel_info_section {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .hotel_detail_section {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hotel_detail,
+    .hotel_details_price {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .price_section {
+      flex-direction: row;
+    }
+
+    .full_price,
+    .stay_details {
+      margin-bottom: 0;
+    }
+
+    .reviews-section {
+      margin: 3rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .hotel_container {
+      width: 100%;
+    }
+
+    .hotel_gallery {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }

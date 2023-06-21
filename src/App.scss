@@ -1,3 +1,8 @@
+$button-text-color: #000;
+$button-background-color: #ffffff;
+$button-icon-color: #333333;
+$button-hover-background-color: #f0f0f0;
+
 * {
   margin: 0;
   padding: 0;
@@ -6,8 +11,9 @@
 
 .link {
   text-decoration: none;
-  color: #000;
+  color: $button-text-color;
 }
+
 .back-button {
   position: fixed;
   top: 60%;
@@ -18,19 +24,23 @@
   align-items: center;
   width: 50px;
   height: 50px;
-  background-color: #ffffff;
+  background-color: $button-background-color;
   border-radius: 50%;
   border: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    top: 40%;
+  }
 }
 
 .back-button svg {
   width: 24px;
   height: 24px;
-  fill: #333333;
+  fill: $button-icon-color;
 }
 
 .back-button:hover {
-  background-color: #f0f0f0;
+  background-color: $button-hover-background-color;
 }

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Header from "../../components/header/Header"
 import EmailList from "../../components/emailList/EmailList"
 import Footer from "../../components/footer/Footer"
@@ -7,6 +7,10 @@ import "./Home.scss"
 import PropertyList from "../../components/propertylist/PropertyList"
 import TopVisited from "../../components/topvisited/Top_Visited"
 const Home = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <>
       <Header type="show" />

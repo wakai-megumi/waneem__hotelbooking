@@ -65,4 +65,37 @@
       }
     }
   }
+
+  // Responsive styles
+  @media (max-width: 768px) {
+    .persons_info_container {
+      gap: 0.5rem;
+      padding: 6px;
+    }
+
+    ._count {
+      padding: 2px;
+      display: flex;
+      flex-direction: column;
+
+      h3 {
+        font-size: 1.4rem;
+      }
+
+      ._count_container {
+        gap: 6px;
+
+        ._count_icon {
+          font-size: 1.3rem;
+          padding: 3px;
+        }
+
+        .persons_info_input {
+          font-size: 0.9rem;
+          padding: 5px;
+          max-width: 40px;
+        }
+      }
+    }
+  }
 }

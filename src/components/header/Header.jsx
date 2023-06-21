@@ -13,7 +13,8 @@ import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
 import { format } from "date-fns"
 import Person_info from "../person_info/Person_info"
-import propsvalidation from "prop-types"
+import PropTypes from "prop-types";
+
 import { toast } from "react-hot-toast"
 import useFetch from "../../customhooks/useFetch"
 import { Searchcontext } from "../../context/Searchcontext"
@@ -139,11 +140,10 @@ const Header = ({ type }) => {
 
         {type === "show" && (
           <>
-            {/* title and tagline of webiste */}
             <div className="header_title">
               <h1> A perfect place to book you leisure time</h1>
               <h5>
-                Get instant access to major discount's ,
+                Get instant access to major discount's
                 <span className="header_title_span"> Join Now</span>
               </h5>
             </div>
@@ -190,7 +190,7 @@ const Header = ({ type }) => {
                       className="date"
                       dateDisplayFormat="dd/MM/yyyy"
                       fixedHeight={true}
-                    // minDate={new Date()}
+                      minDate={new Date()}
                     />
                   )}
                 </div>
@@ -199,7 +199,7 @@ const Header = ({ type }) => {
                   id="person_info_picker"
                   onClick={showPerson_picker}
                 >
-                  <SlPeople className="search_icon" id="person_picker_icon" />
+                  <SlPeople className="search_icon " id="person_picker_icon" />
                   {/* need to changed after or renderring */}
                   <span className="header-input" id="person_span_picker">
                     {`${service_info.adults} Adults ${service_info.child} Child ${service_info.rooms} Rooms`}
@@ -218,13 +218,14 @@ const Header = ({ type }) => {
                 </div>
               </div>
             </div>
-
-            {destination !== "" && !show_picker && !show_person_picker && (
-              <button className="header_submit" onClick={handleclick}>
-                <FaSearchLocation className="submit_icon" />
-                <h3> Search</h3>
-              </button>
-            )}
+            <div className="button-div">
+              {destination !== "" && !show_picker && !show_person_picker && (
+                <button className="header_submit" onClick={handleclick}>
+                  <FaSearchLocation className="submit_icon" />
+                  <h3> Search</h3>
+                </button>
+              )}
+            </div>
           </>
         )}
       </div>
@@ -235,5 +236,5 @@ const Header = ({ type }) => {
 export default Header
 
 Header.propTypes = {
-  type: propsvalidation.string,
+  type: PropTypes.string.isRequired,
 }

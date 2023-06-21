@@ -131,3 +131,38 @@
   cursor: pointer;
   color: white;
 }
+
+@media screen and (max-width: 768px) {
+  .booking-card {
+    width: 90%;
+    .booking-card__review {
+      .reviewbutton {
+        font-size: 0.7rem;
+      }
+    }
+  }
+
+  .booking-card__hotel-name {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .booking-card__hotel-address {
+    font-size: 12px;
+    color: #777;
+  }
+
+  .booking-card__label {
+    font-weight: 600;
+    margin-right: 4px;
+    font-size: 17px;
+  }
+
+  .booking-card__value {
+    font-size: 12px;
+    color: #333;
+  }
+  .booking-card__button {
+    font-size: 0.7rem;
+  }
+}

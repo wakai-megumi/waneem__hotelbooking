@@ -122,6 +122,11 @@ const HotelList = () => {
 
     }
   }
+  const [showSearchHeader, setShowSearchHeader] = useState(false);
+
+  const toggleSearchHeader = () => {
+    setShowSearchHeader(!showSearchHeader);
+  };
 
   ////////////////////////////////////////////////////////////
   return (
@@ -130,7 +135,116 @@ const HotelList = () => {
       <div className="hotellist">
 
         <div className="hotellist_container">
-          <div className="search-form">
+          <button
+            className="search-header-toggler"
+            onClick={toggleSearchHeader}
+          >
+            Open Search Bar
+          </button>
+          {showSearchHeader && (
+            <div className="search-bar">
+              {/*  */}
+              <label htmlFor="destination">Destination</label>
+              <input
+                name="destination"
+                placeholder="---DHARAMSHALA"
+                value={destination}
+                onChange={(e) => {
+                  setDestination(e.target.value)
+                }}
+              />
+              {/*  */}
+
+              <div className="date_picker_wrapper">
+                <div id="date-info" >
+                  <label htmlFor="stay-date" id="date-label" >
+                    Booking Date
+                  </label>
+                  <button className="date-button" onClick={show_picker}>
+                    {showPerson_picker ? "Hide Picker" : "Show Picker"}
+                  </button>
+                </div>
+
+                <span type="text" id="date_picker_span" className="date_input">
+                  {`${format(date[0]?.startDate, "dd/MM/yyyy")} to ${format(
+                    date[0]?.endDate,
+                    "dd/MM/yyyy"
+                  )}`}
+                </span>
+                {showData_picker && (
+                  <DateRange //---------------------------------------using usestate to change its appearance
+                    editableDateInputs={true}
+                    onChange={(item) => setDate([item.selection])}
+                    moveRangeOnFirstSelection={false}
+                    ranges={date}
+                    className="date"
+                    dateDisplayFormat="dd/MM/yyyy"
+                    fixedHeight={true}
+                    minDate={new Date()}
+                  />
+                )}
+              </div>
+
+              {/*  */}
+
+              <div className="chart-info">
+                <div id="person-info" >
+                  <h2 >
+                    Service filters
+                  </h2>
+                  <button className="info-button" onClick={show_person_picker}>
+                    {showPerson_picker ? "Hide Picker" : "Show Picker"}
+                  </button>
+                </div>
+
+                <span>
+                  Adults :
+                  <span className="info-input">
+                    {service_info?.adults ? service_info.adults : 1}{" "}
+                  </span>
+                </span>
+                <span>
+                  Child :
+                  <span className="info-input">
+                    {service_info?.child ? service_info.child : 0}{" "}
+                  </span>
+                </span>
+                <span>
+                  Rooms :
+                  <span className="info-input">
+                    {service_info?.rooms ? service_info.rooms : 1}
+                  </span>
+                </span>
+                <span>
+                  Min price / Night :
+                  <span className="info-input">
+                    {service_info.minprice ? service_info.minprice : 1}{" "}
+                  </span>
+                </span>
+                <span>
+                  Max price / Night :
+                  <span className="info-input">
+                    {service_info.maxprice ? service_info.maxprice : 1}{" "}
+                  </span>
+                </span>
+                {showPerson_picker && (
+                  <div className="person-picker">
+                    <Person_info
+                      extraoptions={true}
+                      person_info_handler={handle_Person_info}
+                      adults={service_info.adults}
+                      child={service_info.child}
+                      rooms={service_info.rooms}
+                      minprice={service_info.minprice}
+                      maxprice={service_info.maxprice}
+                    />
+                  </div>
+                )}
+              </div>
+              {/*  */}
+            </div>
+          )}
+          <div className="search-form ">
             <h2> Search</h2>
             <label htmlFor="destination">Destination</label>
             <input

@@ -41,7 +41,7 @@ export const SearchItem = ({ item, handlebooking }) => {
         <div className="si-details">
           <div className="si-details-top">
             <span className="si-grading"></span>{" "}
-            {/* change the grading value after uploading the  making the selection component on vasis of ratingvalue -- not doing right now */}
+            {/* change  grading value after uploading the  making the selection component on vasis of ratingvalue -- not doing right now */}
             {item?.rating && <span className="si-rating">{item?.rating}</span>}
           </div>
           <div className="si-details-bottom">
@@ -49,9 +49,7 @@ export const SearchItem = ({ item, handlebooking }) => {
               only -- {item?.cheapestprice} Rs
             </span>
             <span className="si-taxes">Included taxes and fees</span>
-            {/* <Link to={`/hotels/${item?._id}`} className="link">                  // using the buttons is better and cleaner and give u much control
-                <span className="si-booking">Book now</span>
-              </Link> */}
+
             <button className="si-booking" onClick={handleBookNow}>
               Book now
             </button>

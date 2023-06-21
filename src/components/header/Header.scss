@@ -3,16 +3,16 @@
   display: flex;
   justify-content: center;
   background-color: #0c0c2c;
+  align-items: center;
 
   // header link section
 
   .header_container {
-    max-width: 1200px;
+    // max-width: 1200px;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     width: 100%;
-    padding: 1rem;
     position: relative;
 
     .header_links {
@@ -100,9 +100,12 @@
     justify-content: space-around;
     position: absolute;
     bottom: -35px;
-
+    right: 0;
+    padding: 0.2rem;
     border-radius: 40% 0 40% 0;
-    height: 80px;
+    // height: 80px;
+    max-height: max-content;
+
     background-image: linear-gradient(
       to right,
       rgb(44, 136, 124),
@@ -118,6 +121,7 @@
       display: flex;
       justify-content: space-around;
       align-items: center;
+      gap: 10px;
       .header_box {
         display: flex;
         align-items: center;
@@ -141,18 +145,18 @@
           color: rgb(3, 24, 24);
           background-color: rgb(200, 196, 196);
         }
-        .date_input {
+        .date_input,
+        .header-input {
           color: gray;
+          &::placeholder {
+            color: grey;
+          }
         }
         .search_icon {
-          font-size: 2rem;
-
-          //like this but only for icon
-
+          font-size: 1.6rem;
+          color: black;
           margin-top: 8px;
         }
-
-        //temporary styles
       }
       .date_picker {
         position: relative;
@@ -178,7 +182,7 @@
 
   .header_submit {
     position: absolute;
-    z-index: 999;
+    z-index: 500;
     right: 45%;
     bottom: -23%;
     display: flex;
@@ -194,5 +198,89 @@
       rgb(44, 136, 124),
       rgb(44, 136, 124)
     );
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+
+    .header_container {
+      flex-direction: column;
+      align-items: center;
+      .header_links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        .header_link {
+          width: fit-content;
+        }
+      }
+    }
+
+    .header_title {
+      width: 100%;
+      text-align: center;
+      margin-bottom: 3rem;
+      h5 {
+        .header_title_span {
+          display: block;
+        }
+      }
+    }
+
+    .header_search_box {
+      padding: 1rem;
+
+      .header_search_box_container {
+        flex-direction: column;
+        position: relative;
+
+        .header_box {
+          width: 100%;
+          margin-bottom: 1rem;
+
+          .header-input,
+          .date_input {
+            font-size: 16px;
+          }
+
+          .search_icon {
+            font-size: 1.2rem;
+            margin: 5px 0 4px 9px;
+            color: rgb(13, 74, 97);
+            position: absolute;
+            bottom: 0;
+            // background-color: white;
+          }
+        }
+
+        .date_picker,
+        .person_info_picker {
+          position: relative;
+          margin-bottom: 1rem;
+
+          .date,
+          .person {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            transform: none;
+          }
+          .date {
+            box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+          }
+        }
+      }
+    }
+
+    .header_submit {
+      right: auto;
+      left: 50%;
+      bottom: -16%;
+      transform: translateX(-50%);
+    }
   }
 }
