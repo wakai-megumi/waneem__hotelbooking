@@ -24,6 +24,8 @@ import NotFoundPage from "./pages/notfoundpage/NotFoundPage"
 import AvailableSoon from "./pages/avaialablesoon/AvailableSoon"
 import PaymentSuccess from "./pages/paymentSuccess/PaymentSuccess"
 const App = () => {
+
+  /////////////////////////////
   const BackButton = () => {
     const navigate = useNavigate();
 
@@ -40,7 +42,7 @@ const App = () => {
       </div>
     );
   };
-
+  ////////////////////////////
 
   return (
     <Router>
