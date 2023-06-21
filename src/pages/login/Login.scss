@@ -1,52 +1,58 @@
+/* Default styles */
 .login {
   display: flex;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
-  .loginwrapper {
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding: 10px;
-    height: 50%;
-    box-shadow: 2px 2px 23px rgb(95, 92, 92);
-    h1 {
-      text-align: center;
-    }
-    .logininput {
-      border: none;
-      outline: none;
-      text-indent: 1rem;
-      padding: 9px;
-      border-radius: 20px;
-      background-color: rgb(227, 218, 218);
-      letter-spacing: 2px;
-      font-size: 1rem;
-    }
-    .btn {
-      border: none;
-      outline: none;
-      padding: 8px;
-      text-align: center;
-      width: 100%;
-      font-size: 20px;
-      font-weight: 600;
-      line-height: 20px;
-      background-color: rgb(39, 208, 78);
-      color: white;
-      border-radius: 10px;
-      max-width: fit-content;
-      align-self: center;
-    }
-    .error {
-      columns: red;
-      font-size: 3rem;
-      text-align: center;
-      font-weight: 600;
-    }
-  }
+}
+
+.login .loginwrapper {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 10px;
+  height: 50%;
+  box-shadow: 2px 2px 23px rgb(95, 92, 92);
+}
+
+.login .loginwrapper h1 {
+  text-align: center;
+}
+
+.login .loginwrapper .logininput {
+  border: none;
+  outline: none;
+  text-indent: 1rem;
+  padding: 9px;
+  border-radius: 20px;
+  background-color: rgb(227, 218, 218);
+  letter-spacing: 2px;
+  font-size: 1rem;
+}
+
+.login .loginwrapper .btn {
+  border: none;
+  outline: none;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
+  background-color: rgb(39, 208, 78);
+  color: white;
+  border-radius: 10px;
+  max-width: fit-content;
+  align-self: center;
+}
+
+.login .loginwrapper .error {
+  columns: red;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 600;
 }
 
 .form-bottom {
@@ -54,12 +60,27 @@
   justify-content: space-evenly;
   align-items: center;
   cursor: pointer;
-  > span {
-    font-size: 1rem;
-    font-weight: 600;
-    &:hover {
-      color: green;
-      transform: scale(1.2);
-    }
+}
+
+.form-bottom > span {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.form-bottom > span:hover {
+  color: green;
+  transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .login .loginwrapper {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .login .loginwrapper {
+    width: 100%;
   }
 }

@@ -1,16 +1,16 @@
-// Register.scss
-
 .register {
   display: flex;
   height: 100%;
   width: 100%;
   justify-content: center;
   align-items: center;
+
   .form {
     width: 60vw;
     display: flex;
     justify-content: center;
     align-items: center;
+
     .register-wrapper {
       width: 90%;
       max-width: 400px;
@@ -67,6 +67,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
+
   > .upload {
     font-size: 2rem;
     color: blue;
@@ -79,12 +80,25 @@
   justify-content: center;
   gap: 9px;
   align-items: center;
+
   > h4 {
     padding: 0 0 3px 0;
+
     &:hover {
       cursor: pointer;
       text-decoration: underline;
       color: green;
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .register .form {
+    width: 80vw;
+  }
+
+  .register .form .register-wrapper {
+    width: 100%;
+    max-width: none;
   }
 }
