@@ -95,7 +95,7 @@ const Register = () => {
       console.log(response.data.url)
       setFormData((prevData) => ({
         ...prevData,
-        profileimage: response.data.url,
+        profileimage: response?.data?.url,
       }));
       setLoad(false)
       setuploaded(true)
@@ -118,7 +118,7 @@ const Register = () => {
     try {
       setLoad(true)
       const response = await axios.post(
-        "http://localhost:3000/api/v1/auth/register",
+        `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/auth/register`,
         formData, { withCredentials: true }
       );
 
