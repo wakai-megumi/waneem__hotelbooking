@@ -80,8 +80,8 @@ const Register = () => {
   });
 
   const handleimageupload = async (e) => {
-    let file = e.target.files[0];
-    const resizedblob = resizeImage(file, 800, 600)
+    const file = e.target.files[0];
+    const resizedblob = await resizeImage(file, 800, 600)
     const data = new FormData();
     data.append('file', resizedblob, file.name);
     data.append('upload_preset', 'upload_hotel_booking');
@@ -101,6 +101,9 @@ const Register = () => {
 
     } catch (err) {
       console.log(err)
+      setLoad(false)
+
+
     }
 
   };
