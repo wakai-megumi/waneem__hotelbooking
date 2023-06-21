@@ -55,6 +55,11 @@ const Navbar = () => {
             <Link to="/bookings" className="nav_link link">
               Bookings
             </Link>
+            {!currentUser && (
+              <Link to="/login" className="menu_link link" onClick={toggleMenu}>
+                Login
+              </Link>
+            )}
             {currentUser && (
               <>
                 <div
