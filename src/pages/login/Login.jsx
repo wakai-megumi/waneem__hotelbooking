@@ -62,7 +62,7 @@ const Login = () => {
 
           <p> click here if-----</p>
 
-          <a className="link" style={{ fontSize: "1rem", color: 'green' }} href={`${import.meta.env.VITE_REACT_ADMIN_URL}`}>  ADMIN</a>
+          <a className="link" style={{ fontSize: "1rem", color: 'green' }} href={`https://waneem-admin.onrender.com`}>  ADMIN</a>
 
         </span>
         <input

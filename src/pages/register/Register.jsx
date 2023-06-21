@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Register.scss";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineCloudUpload } from "react-icons/ai";
+import { toast } from "react-hot-toast";
 const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -123,6 +124,7 @@ const Register = () => {
 
       console.log(response)
       dispatch({ type: "SUCCESS", payload: response?.data?.user });
+      toast.success("registered successully")
       navigate("/");
       setLoad(false)
 
