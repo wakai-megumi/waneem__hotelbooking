@@ -131,7 +131,7 @@ const Register = () => {
     } catch (err) {
       setLoad(false)
       console.log(err)
-      dispatch({ type: "FAILURE", payload: err.response.data.message });
+      dispatch({ type: "FAILURE", payload: err.response?.message });
     }
   };
 
