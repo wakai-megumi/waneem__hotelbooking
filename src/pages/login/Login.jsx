@@ -3,7 +3,7 @@ import { Authcontext } from "../../context/Authcontext.jsx"
 import axios from "axios"
 import "./Login.scss"
 import { useNavigate } from "react-router-dom"
-import toast from "react-toastify"
+import { toast } from "react-toastify"
 
 const Login = () => {
 
