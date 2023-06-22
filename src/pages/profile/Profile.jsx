@@ -202,6 +202,7 @@ const UserProfile = () => {
                 setLoadingImage(false);
 
                 if (axios.isCancel(err)) {
+                    toast.info("image uploading cancelled")
                     console.log('Image upload canceled:', err.message);
                 } else {
                     console.log(err);

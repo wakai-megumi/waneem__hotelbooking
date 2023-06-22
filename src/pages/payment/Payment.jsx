@@ -48,6 +48,7 @@ export const Payment = () => {
                 <span style={{ color: "green", cursor: "pointer" }}
                     onClick={() => navigate('/bookings')}>  my bookings page</span> ,
                 as you booking requested is succcesfully created , you can wait for confiramtion from hotel</h2>
+            <h3> user card number 4242 4242 4242 4242  , other details anythinng for now for testing the stripe </h3>
             <div className="payment__details">
 
                 {fakeloading ? <Spinner />
