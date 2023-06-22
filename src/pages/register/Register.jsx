@@ -5,6 +5,8 @@ import "./Register.scss";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { toast } from "react-hot-toast";
+import Spinner from '../../utils/spinner/Spinner';
+
 const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
@@ -87,7 +89,6 @@ const Register = () => {
     data.append('file', resizedblob, file.name);
     data.append('upload_preset', 'upload_hotel_booking');
 
-
     try {
       setLoad(true)
       const response = await axios.post(`${import.meta.env.VITE_REACT_CLOUDINARY_URL}`, data)
@@ -103,20 +104,14 @@ const Register = () => {
     } catch (err) {
       console.log(err)
       setLoad(false)
-
-
     }
-
   };
-
-
 
   const handleSubmit = async (e) => {
 
     e.preventDefault();
     dispatch({ type: "START" });
     try {
-      setLoad(true)
       const response = await axios.post(
         `${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/auth/register`,
         formData, { withCredentials: true }
@@ -126,11 +121,10 @@ const Register = () => {
       dispatch({ type: "SUCCESS", payload: response?.data?.user });
       toast.success("registered successully")
       navigate("/");
-      setLoad(false)
 
     } catch (err) {
-      setLoad(false)
       console.log(err)
+      toast.error(err.response?.data?.message)
       dispatch({ type: "FAILURE", payload: err.response?.message });
     }
   };
@@ -200,8 +194,16 @@ const Register = () => {
             onChange={handleChange}
           />
           <label htmlFor="profileimage" className="uploadimage"> <span>upload profile image</span>
-            <span className="upload" disabled={load}>  <AiOutlineCloudUpload style={uploaded ? { color: 'green' } : { color: 'blue' }} /> </span>
-            {uploaded && <span style={uploaded ? { color: 'green' } : { color: 'blue' }} >  success</span>}
+            {
+
+              load ? <Spinner /> :
+                <>
+                  <span className="upload" disabled={load}>  <AiOutlineCloudUpload style={uploaded ? { color: 'green' } : { color: 'blue' }} /> </span>
+                  {uploaded && <span style={uploaded ? { color: 'green' } : { color: 'blue' }} >  success</span>}</>
+
+            }
+
+
 
           </label>
           <input
@@ -213,9 +215,12 @@ const Register = () => {
             disabled={loading || load}
             onChange={handleimageupload}
           />
-          <button disabled={loading || load} className="register-btn" type="submit">
-            Register
-          </button>
+          {
+            load ? <Spinner /> :
+              <button className="register-btn" type="submit">
+                Register
+              </button>
+          }
           {error && <span className="register-error">{error}</span>}
           <span className="formbottom">
             <h5>already have an account! </h5>
