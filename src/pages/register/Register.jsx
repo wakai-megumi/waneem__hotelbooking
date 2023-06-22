@@ -194,14 +194,17 @@ const Register = () => {
             onChange={handleChange}
           />
           <label htmlFor="profileimage" className="uploadimage"> <span>upload profile image</span>
-            {
 
-              load ? <Spinner /> :
-                <>
-                  <span className="upload" disabled={load}>  <AiOutlineCloudUpload style={uploaded ? { color: 'green' } : { color: 'blue' }} /> </span>
-                  {uploaded && <span style={uploaded ? { color: 'green' } : { color: 'blue' }} >  success</span>}</>
 
-            }
+
+            <>
+              <span className="upload" disabled={load}> {
+                load ? <Spinner /> : <AiOutlineCloudUpload style={uploaded ? { color: 'green' } : { color: 'blue' }} />
+              } </span>
+              {uploaded && <span style={uploaded ? { color: 'green' } : { color: 'blue' }} >  success</span>}
+            </>
+
+
 
 
 
@@ -215,12 +218,13 @@ const Register = () => {
             disabled={loading || load}
             onChange={handleimageupload}
           />
-          {
-            load ? <Spinner /> :
-              <button className="register-btn" type="submit">
-                Register
-              </button>
-          }
+
+
+          <button className="register-btn" type="submit">
+            {loading ? <Spinner /> :
+              Register}
+          </button>
+
           {error && <span className="register-error">{error}</span>}
           <span className="formbottom">
             <h5>already have an account! </h5>
@@ -229,9 +233,9 @@ const Register = () => {
         </div>
 
 
-      </form>
+      </form >
 
-    </div>
+    </div >
   );
 };
 
