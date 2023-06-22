@@ -3,15 +3,17 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaTimes, FaBars } from 'react-icons/fa';
 import "./Navbar.scss";
 import { Authcontext } from "../../context/Authcontext";
+import noavatar from "../../assets/noavatar.jpg"
 
 const Navbar = () => {
-  const { currentUser } = useContext(Authcontext);
+  const { currentUser, dispatch } = useContext(Authcontext);
   const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
       try {
+
         const user = JSON.parse(localStorage.getItem("currentUser"));
         console.log(user);
       } catch (error) {
@@ -24,8 +26,9 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("currentUser");
-    window.location.reload();
-    navigate("/");
+    dispatch({ type: "LOGOUT" })
+
+    navigate("/", { replace: true });
   };
 
   const toggleMenu = () => {
@@ -66,7 +69,7 @@ const Navbar = () => {
                   className="user_image"
                   onClick={() => navigate(`/profile/${currentUser._id}`)}
                 >
-                  <img src={currentUser?.profileimage} alt="user" />
+                  <img src={currentUser?.profileimage || noavatar} alt="user" />
                 </div>
 
                 <Link

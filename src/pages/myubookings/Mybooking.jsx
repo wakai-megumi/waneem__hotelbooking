@@ -14,10 +14,13 @@ const Mybooking = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null)
     const user = JSON.parse(localStorage.getItem("currentUser"))
-    const userid = user._id
+    const userid = user?._id
     console.log(userid)
     console.log(bookings, "bookings page 0")
     useEffect(() => {
+        if (!user) {
+            navigate('/login')
+        }
         fetchBookings();
     }, []);
 

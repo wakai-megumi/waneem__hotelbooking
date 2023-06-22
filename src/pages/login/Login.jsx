@@ -3,6 +3,8 @@ import { Authcontext } from "../../context/Authcontext.jsx"
 import axios from "axios"
 import "./Login.scss"
 import { useNavigate } from "react-router-dom"
+import toast from "react-toastify"
+
 const Login = () => {
 
   const [credentials, setCredentials] = useState({
@@ -25,16 +27,14 @@ const Login = () => {
 
   ///code for make user go back on same page after login from where he is reidirected
 
-  console.log(loading)
   const navigate = useNavigate()
   const handlesubmit = async (e) => {
     e.preventDefault()
-    console.log("handlesubmit")
-    console.log("here")
 
     dispatch({ type: "START" })
     try {
       const { email, password } = credentials
+      console.log(email, password)
       const res = await axios.post(`${import.meta.env.VITE_REACT_SERVER_URL}/api/v1/auth/login`, {
         email: email,
         password: password,
@@ -48,7 +48,8 @@ const Login = () => {
       dispatch({ type: "SUCCESS", payload: res?.data?.user })
       navigate('/')
     } catch (err) {
-      console.log(err, "by here this error")
+      toast.error(err?.response?.data?.message)
+      console.log(err?.response?.data?.message)
       dispatch({ type: "FAILURE", payload: err.response.data.message })
     }
   }
@@ -62,7 +63,7 @@ const Login = () => {
 
           <p> click here if-----</p>
 
-          <a className="link" style={{ fontSize: "1rem", color: 'green' }} href={`https://waneem-admin.onrender.com`}>  ADMIN</a>
+          <a className="link" style={{ fontSize: "1rem", color: 'green' }} href={`https://waneem-admin.onrender.co`}>  ADMIN</a>
 
         </span>
         <input
@@ -85,7 +86,6 @@ const Login = () => {
         <button disabled={loading} style={loading ? { cursor: 'not-allowed' } : null} className="btn" type="submit">
           submit
         </button>
-        {error && <span className="error"> {error}</span>}
         <div className="form-bottom">
           <span className="forgot">Forgot Password?</span>
           <span className=" registerbtn" onClick={() => navigate('/register')}>Register here</span></div>
