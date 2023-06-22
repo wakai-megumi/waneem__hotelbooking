@@ -222,7 +222,7 @@ const Register = () => {
 
           <button className="register-btn" type="submit">
             {loading ? <Spinner /> :
-              Register}
+              "Register"}
           </button>
 
           {error && <span className="register-error">{error}</span>}
